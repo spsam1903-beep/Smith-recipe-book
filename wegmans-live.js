@@ -12,6 +12,15 @@ const ALGOLIA="https://qgppr19v8v-dsn.algolia.net/1/indexes/*/queries";
 const APP_ID="QGPPR19V8V";
 const SEARCH_ONLY_KEY="9a10b1401634e9a6e55161c3a60c200d";
 const SHOP_URL="https://www.wegmans.com/stores/dewitt-ny";
+const SEARCH_URL="https://www.wegmans.com/shop/search?query=";
+// Wegmans product pages accept /shop/product/{numeric productID}.
+// If a hit only exposes a SKU, link to Wegmans product search rather than invent a direct page URL.
+function wegmansLink(p){
+ const id=p.pageId===null||p.pageId===undefined?"":String(p.pageId);
+ if(/^\d{1,12}$/.test(id))return {url:"https://www.wegmans.com/shop/product/"+encodeURIComponent(id),direct:true};
+ const term=[p.name,p.packSize].filter(Boolean).join(" ").trim();
+ return {url:SEARCH_URL+encodeURIComponent(term),direct:false};
+}
 const $=id=>document.getElementById(id);
 const grocery=()=>window.groceryUtils;
 const matches=new Map();
@@ -47,8 +56,11 @@ function getAisle(hit){
 function product(hit){
  const id=hit.skuId??hit.productID??hit.productId??hit.objectID;
  if(!id)return null;
+ // Keep SKU identity for product matching but use the productID for an actual Wegmans page.
+ const pageId=hit.productID??hit.productId??null;
  return {
-  id:String(id),name:String(hit.productName||hit.webProductDescription||hit.name||"Unnamed product"),
+  id:String(id),pageId:pageId===null?null:String(pageId),
+  name:String(hit.productName||hit.webProductDescription||hit.name||"Unnamed product"),
   brand:String(hit.consumerBrandName||""),packSize:String(hit.packSize||hit.size||""),
   aisle:getAisle(hit),price:getPrice(hit),storeNumber:STORE.number
  };
@@ -113,7 +125,7 @@ function saveAndRender(){grocery()?.save();grocery()?.refresh();updateSubtotal()
 function apply(item,p){
  const previous=item.wegmans;
  const isNew=previous?.id!==p.id;
- item.wegmans={id:p.id,name:p.name,packSize:p.packSize,
+ item.wegmans={id:p.id,pageId:p.pageId??null,name:p.name,packSize:p.packSize,
   aisle:p.aisle,price:p.price,checkedAt:new Date().toISOString(),storeNumber:STORE.number};
  if(p.aisle)item.aisle=p.aisle;
  if(p.price!==null && (isNew||item.priceSource!=="manual")){
@@ -137,8 +149,15 @@ function choose(item,found){
   for(const p of found){
    const row=create("div",list,"wg-choice");
    const desc=create("div",row,"wg-choice-copy");
-   create("strong",desc,"",p.name);
+   const productPage=wegmansLink(p);
+   const nameLink=create("a",desc,"wg-product-link",p.name+" ↗");
+   nameLink.href=productPage.url;
+   nameLink.target="_blank";
+   nameLink.rel="noopener noreferrer";
+   nameLink.title=productPage.direct?"View this exact product on Wegmans":"Search Wegmans for this product";
    create("div",desc,"wg-muted",(p.brand?p.brand+" · ":"")+(p.packSize||"Package size not provided"));
+   const visit=create("a",desc,"wg-visit-link",productPage.direct?"View product on Wegmans ↗":"Search product on Wegmans ↗");
+   visit.href=productPage.url;visit.target="_blank";visit.rel="noopener noreferrer";
    create("div",desc,"wg-small",
     (p.price===null?"Price not available":currency(p.price)+" per package")+
     " · "+(p.aisle?"Aisle "+p.aisle:"Aisle not available"));
@@ -188,7 +207,16 @@ function enhanceRow(item,li){
  const label=item.wegmans
   ? item.wegmans.name+(item.wegmans.packSize?" · "+item.wegmans.packSize:"")
   : "No product matched yet";
- create("div",match,"wg-product-label",label);
+ if(item.wegmans){
+   const productPage=wegmansLink(item.wegmans);
+   const savedLink=create("a",match,"wg-product-link",label+" ↗");
+   savedLink.href=productPage.url;
+   savedLink.target="_blank";
+   savedLink.rel="noopener noreferrer";
+   savedLink.title=productPage.direct?"View matched product on Wegmans":"Find matched product on Wegmans";
+ }else{
+   create("div",match,"wg-product-label",label);
+ }
  const detail=item.wegmans
    ? (item.aisle?"Aisle/section: "+item.aisle+" · ":"")
       +(item.wegmans.checkedAt?"Checked "+new Date(item.wegmans.checkedAt).toLocaleDateString()+" · ":"")
