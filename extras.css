@@ -41,3 +41,7 @@ button:disabled{opacity:.55;cursor:not-allowed}
 @media(max-width:900px){.pantry-form{grid-template-columns:1fr 1fr}.pantry-list li{grid-template-columns:1.5fr 1fr 1fr}.pantry-list .actions{grid-column:1/-1}}
 @media(max-width:560px){.pantry-form{grid-template-columns:1fr}.pantry-list li{grid-template-columns:1fr 1fr}.pantry-list .pantry-name{grid-column:1/-1}.pantry-list .actions{grid-column:1/-1}.cook-mode{padding:20px}}
 @media print{#cook-dialog{display:none!important}body:not(.print-shop) .personal-panel button,body:not(.print-shop) .start-cooking{display:none!important}}
+
+/* Keep three tabs comfortable on small laptop and phone windows. */
+.tabs{flex-wrap:wrap}
+@media(max-width:520px){.tabs button{padding:9px 12px;font-size:.92rem}}
