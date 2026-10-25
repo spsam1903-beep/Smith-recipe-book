@@ -45,3 +45,17 @@ button:disabled{opacity:.55;cursor:not-allowed}
 /* Keep three tabs comfortable on small laptop and phone windows. */
 .tabs{flex-wrap:wrap}
 @media(max-width:520px){.tabs button{padding:9px 12px;font-size:.92rem}}
+
+/* Classic / high-protein recipe selector */
+.recipe-variant-panel{background:#f4eee5;border:1px solid #e5d8c8;border-radius:12px;padding:15px 18px;margin:16px 0 6px}
+.recipe-variant-header{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.recipe-variant-header strong{font-size:.96rem;color:#4b3428}
+.recipe-variant-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.recipe-variant-tabs button{cursor:pointer;border:1px solid #d9c3ad;background:#fffdfa;color:#684534;border-radius:8px;padding:9px 15px;font:600 .91rem system-ui}
+.recipe-variant-tabs button.chosen{background:#814c34;border-color:#814c34;color:white}
+.recipe-variant-copy{color:#766759;font-size:.89rem;margin:11px 0 5px}
+.recipe-variant-changes{font-size:.84rem;color:#755442;margin:8px 0}
+.recipe-variant-changes strong{font-weight:700}
+.recipe-variant-disclaimer{font-size:.8rem;color:#8b6e58;margin:7px 0 0}
+.protein-tag{display:inline-block;font-size:.78rem;margin-top:8px;color:#755234;background:#f5eadc;padding:4px 8px;border-radius:6px}
+@media print{.recipe-variant-tabs,.recipe-variant-disclaimer{display:none!important}}
