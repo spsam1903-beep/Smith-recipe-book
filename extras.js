@@ -94,9 +94,9 @@ window.recipeCardBadge=(r,card)=>{
  const rating=Number(notes[r.id]?.rating||0);
  if(rating)el("span",card,"card-rating",ratingText(rating)+" · Your rating");
 };
-window.attachRecipeExtras=(r,detail)=>{
+window.attachRecipeExtras=(r,detail,getSelectedRecipe)=>{
  const start=el("button",detail,"start-cooking","▶ Start step-by-step cooking mode");
- start.type="button";start.onclick=()=>openCooking(r);
+ start.type="button";start.onclick=()=>openCooking(typeof getSelectedRecipe==="function"?getSelectedRecipe():r);
  const recipeColumns=detail.querySelector(".columns");if(recipeColumns)detail.insertBefore(start,recipeColumns);
  const panel=el("section",detail,"personal-panel");
  el("h3",panel,"","Your rating & cooking notes");
