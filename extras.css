@@ -1,0 +1,43 @@
+
+/* Personalized recipe details */
+.personal-panel{margin:26px 0 12px;padding:19px 22px;background:#fbf4eb;border:1px solid #e8d9c9;border-radius:12px}
+.personal-panel h3{margin:0 0 10px!important}.personal-sub{font-size:.86rem;color:#766759;margin:6px 0 14px}
+.rating-stars{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.rating-stars button{border:none;background:transparent;color:#ac9988;font-size:1.95rem;padding:1px 5px;cursor:pointer;line-height:1.3}
+.rating-stars button.chosen{color:#b17430}.rating-stars button:focus-visible{outline:2px solid #8b4934;outline-offset:2px}
+.rating-stars .rating-caption{font-size:.89rem;color:#766759;margin-left:8px}
+.recipe-notes{width:100%;font:inherit;min-height:108px;resize:vertical;padding:13px;border:1px solid #dccbbb;border-radius:8px;background:#fff;line-height:1.5}
+.personal-lastcooked{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.personal-lastcooked button,.start-cooking{border:1px solid #c99d80;background:#fffdfa;color:#78442c;border-radius:8px;padding:9px 13px;cursor:pointer;font:600 .93rem system-ui}
+.start-cooking{background:#8b4934;color:#fff;border-color:#8b4934;margin:15px 0 5px}
+.card-rating{display:block;margin-top:8px;font-size:.83rem;color:#a36a27}
+#cook-dialog{width:min(760px,calc(100% - 24px));max-height:92vh}
+.cook-mode{padding:26px 30px 30px}.cook-header{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.cook-header h2{font:normal 2rem Georgia,serif;margin:2px 0}.cook-steps{color:#816e5e;font-size:.91rem;margin:7px 0}
+.cook-track{height:7px;border-radius:99px;background:#eee2d4;overflow:hidden;margin:17px 0 24px}.cook-track-bar{height:100%;width:0%;background:#8b4934;transition:width .2s}
+.cook-instruction{font:normal clamp(1.2rem,2.8vw,1.55rem) Georgia,serif;line-height:1.55;min-height:130px}
+.cook-footer{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.cook-footer button,.timer-panel button{border:1px solid #dccbbb;background:#fff;border-radius:8px;padding:10px 13px;cursor:pointer;font:inherit}
+.cook-footer .next,.timer-panel .primary{background:#8b4934;color:white;border-color:#8b4934}
+button:disabled{opacity:.55;cursor:not-allowed}
+.timer-panel{border:1px solid var(--line);background:#fbf6ef;border-radius:12px;padding:17px 19px;margin-top:24px}
+.timer-panel strong{font:600 1rem system-ui}.timer-value{font:600 2.8rem/1.1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1px;margin:10px 0 15px;color:#553a2c}
+.timer-options{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.timer-options input{min-width:74px;width:92px;padding:9px}.timer-options label{display:flex;gap:7px;align-items:center}
+.timer-presets{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.timer-presets button{padding:6px 11px}
+.timer-hint{font-size:.78rem;color:#766759;margin:11px 0 0}
+.pantry-heading h2{font:normal 2rem Georgia,serif;margin:0}.pantry-heading p{color:var(--muted);margin:5px 0}
+.pantry-form{display:grid;grid-template-columns:minmax(220px,2fr) minmax(120px,1fr) minmax(120px,1fr) auto;gap:10px;margin:24px 0}
+.pantry-form input,.pantry-form select{min-width:0;width:100%}.pantry-form button{border:0;border-radius:8px;padding:12px 16px;background:#714431;color:#fff;cursor:pointer;font:600 .92rem system-ui}
+.pantry-controls{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.pantry-controls button{background:#fffdfa;border:1px solid var(--line);border-radius:8px;padding:10px 14px;cursor:pointer}
+.pantry-list{padding:0;margin:16px 0;list-style:none}.pantry-list li{display:grid;grid-template-columns:minmax(160px,2fr) minmax(105px,1fr) minmax(110px,1fr) 70px auto;gap:9px;align-items:center;padding:12px;background:#fffdfa;border:1px solid var(--line);border-radius:11px;margin:9px 0}
+.pantry-list input,.pantry-list select{min-width:0;width:100%;padding:9px}.pantry-list .actions{display:flex;gap:6px}
+.pantry-list .actions button{background:#fff;border:1px solid var(--line);border-radius:7px;cursor:pointer;padding:8px 10px}
+.pantry-list li.low{opacity:.74}.pantry-label{display:flex;flex-wrap:wrap;gap:5px;align-items:center;justify-content:center;font-size:.78rem;color:#765f4e}
+.pantry-label input{width:16px;min-width:0;accent-color:#8b4934}
+.pantry-card{background:#f7ecdd;border:1px solid #e1cab3;padding:15px;border-radius:10px;margin:17px 0}
+.pantry-message{color:#705a49;font-size:.85rem;min-height:1.5em}
+.shop-group{display:block!important;background:transparent!important;border:0!important;margin:20px 0 4px!important;padding:0 4px!important;color:#6a4d3d;font:bold .88rem system-ui;letter-spacing:.04em;text-transform:uppercase}
+.shop-list .actions{flex-wrap:wrap}.pantry-mini-badge{font-size:.75rem;color:#6f4d31}
+@media(max-width:900px){.pantry-form{grid-template-columns:1fr 1fr}.pantry-list li{grid-template-columns:1.5fr 1fr 1fr}.pantry-list .actions{grid-column:1/-1}}
+@media(max-width:560px){.pantry-form{grid-template-columns:1fr}.pantry-list li{grid-template-columns:1fr 1fr}.pantry-list .pantry-name{grid-column:1/-1}.pantry-list .actions{grid-column:1/-1}.cook-mode{padding:20px}}
+@media print{#cook-dialog{display:none!important}body:not(.print-shop) .personal-panel button,body:not(.print-shop) .start-cooking{display:none!important}}
