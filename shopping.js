@@ -139,6 +139,7 @@ function render(){
  $("shop-count").textContent=open.length+" left to get · "+closed.length+" checked off";
  $("shop-badge").textContent=items.length?"("+open.length+")":"";
  $("shop-empty").hidden=open.length>0;$("shop-got-section").hidden=closed.length===0;
+ window.wegmansLive?.updateSubtotal();
 }
 function row(item,list){
  const li=element("li",list,item.done?"done":"");
