@@ -1,0 +1,30 @@
+/* Nutrition and cost calculator — laptop-first, contained in recipe dialog */
+.calculator-panel{margin:24px 0;background:#fbf8f3;border:1px solid #e4d7c8;border-radius:13px;padding:20px 21px}
+.calculator-head h3{font:normal 1.55rem Georgia,serif;margin:0 0 3px}
+.calculator-caption{color:#766759;font-size:.89rem;margin:0 0 17px}
+.calc-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.calc-metric{background:#fff;border:1px solid #e5d8ca;border-radius:9px;padding:13px 10px;min-width:0}
+.calc-metric-label{font-size:.76rem;color:#806e60;margin-bottom:8px}
+.calc-metric-number{display:block;font:700 clamp(1.05rem,2.8vw,1.4rem) system-ui;white-space:normal;overflow-wrap:anywhere;color:#3f2f22}
+.calc-metric-sub{color:#857668;font-size:.72rem;line-height:1.35;margin-top:6px}
+.calc-footnote{grid-column:1/-1;color:#766759;font-size:.8rem;margin:4px 0 0}
+.calc-actions{margin-top:12px}
+.calc-actions button{font-size:.9rem}
+.calc-help,.calc-table-intro{color:#766759;font-size:.8rem;line-height:1.5;margin:12px 0 0}
+.calc-save-status{font-size:.83rem;color:#6f513e;margin:8px 0 0;min-height:0}
+.calc-editable{border-top:1px solid #e4d7c8;margin-top:16px;padding-top:12px;overflow-x:auto}
+.calc-table-intro{margin:2px 0 12px}
+.calc-column-head,.calc-ingredient-row{display:grid;grid-template-columns:34px minmax(165px,2.4fr) repeat(5,minmax(65px,1fr));gap:7px;align-items:center;min-width:620px}
+.calc-column-head{font-weight:650;color:#796351;font-size:.72rem;padding:8px 4px;border-bottom:1px solid #e4d7c8}
+.calc-ingredient-row{padding:9px 4px;border-bottom:1px solid #eee4da}
+.calc-included{display:flex;align-items:center;justify-content:center}
+.calc-included input{accent-color:#8b4934;width:17px;height:17px;min-width:0}
+.calc-ingredient-name{line-height:1.3;font-size:.81rem;color:#4e392b}
+.calc-field{display:flex;flex-direction:column;gap:4px}
+.calc-field span{font-size:.68rem;color:#87776b;display:none}
+.calc-field input{width:100%;min-width:0;padding:8px 5px;font-size:.84rem;border:1px solid #e2d4c7;border-radius:6px}
+.calc-field input:disabled{background:#efeee9;opacity:.6}
+.calc-footer-actions{margin:14px 0}
+@media(max-width:750px){.calc-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.calc-metric:last-of-type{grid-column:1/-1}}
+@media(max-width:500px){.calculator-panel{padding:15px 12px}.calc-metric{padding:11px 9px}}
+@media print{.calculator-panel{break-inside:avoid}.calc-actions,.calc-editable,.calc-save-status,.calc-help{display:none!important}.calc-metrics{grid-template-columns:repeat(5,1fr)}}
