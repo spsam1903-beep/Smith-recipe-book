@@ -109,7 +109,7 @@ async function search(query){
   throw err;
  }finally{clearTimeout(timeout);}
 }
-function saveAndRender(){grocery()?.save();grocery()?.refresh();}
+function saveAndRender(){grocery()?.save();grocery()?.refresh();updateSubtotal();}
 function apply(item,p){
  const previous=item.wegmans;
  const isNew=previous?.id!==p.id;
@@ -231,6 +231,7 @@ refreshButton.onclick=async()=>{
  running=true;refreshButton.disabled=true;
  let scanned=0,updated=0,errors=0,review=0;
  const items=grocery().getItems().filter(x=>!x.done).slice(0,30);
+ if(!items.length){running=false;refreshButton.disabled=false;showStatus("Add an item to your shopping list first.");return;}
  try{
   for(const item of items){
    scanned++;
@@ -247,8 +248,11 @@ refreshButton.onclick=async()=>{
  }
  if(errors<3)showStatus(
   "DeWitt lookup complete: "+updated+" auto-updated, "+review+" need product selection"+
-  (errors?", "+errors+" failed.":".")+" Use Find product / Review matches on each row.");
+  (errors?", "+errors+" could not be checked (the lookup may be blocked).":".")+
+  " Use Find product / Review matches on each row. Missing prices and aisles remain blank.");
 };
+const closeMatch=$("wg-close");
+if(closeMatch)closeMatch.onclick=()=>$("wg-choose").close();
 const open=$("wg-open-store");
 open.href=SHOP_URL;
 open.target="_blank";open.rel="noopener noreferrer";
