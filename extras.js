@@ -2,7 +2,7 @@
 (() => {
 "use strict";
 const $=id=>document.getElementById(id);
-const pantryKey="smith-cookbook-pantry-v1",reviewsKey="smith-cookbook-reviews-v1",shoppingKey="smith-cookbook-shopping-v1";
+const pantryKey="smith-cookbook-pantry-v1",reviewsKey="smith-cookbook-reviews-v1",shoppingKey="smith-cookbook-shopping-v1",calculatorKey="smith-cookbook-calculators-v1";
 const makeId=()=>String(Date.now())+"-"+Math.random().toString(36).slice(2);
 const places=["Pantry","Fridge","Freezer","Spice rack","Other"];
 function el(tag,parent,cls,content){const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;parent.appendChild(e);return e;}
@@ -66,11 +66,11 @@ $("pantry-form").onsubmit=e=>{
 };
 $("pantry-export").onclick=()=>{
  const output={format:"smith-cookbook-full-backup-v1",savedAt:new Date().toISOString(),
- shopping:read(shoppingKey,[]),reviews:notes,pantry};
+ shopping:read(shoppingKey,[]),reviews:notes,pantry,calculators:read(calculatorKey,{})};
  const b=new Blob([JSON.stringify(output,null,2)],{type:"application/json"});
  const url=URL.createObjectURL(b),a=document.createElement("a");a.href=url;a.download="smith-recipe-book-backup.json";
  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
- pantryMessage("Backup downloaded (shopping list, ratings, notes, pantry).");
+ pantryMessage("Complete backup downloaded: shopping list, ratings, notes, pantry, and macro/cost entries.");
 };
 $("pantry-import").onchange=async e=>{
  const file=e.target.files?.[0];if(!file)return;
@@ -78,10 +78,14 @@ $("pantry-import").onchange=async e=>{
   const data=JSON.parse(await file.text());
   if(data.format!=="smith-cookbook-full-backup-v1"||!Array.isArray(data.shopping)||!Array.isArray(data.pantry)||!data.reviews||typeof data.reviews!=="object")throw Error("Invalid backup");
   if(!window.confirm("Restore this backup? It will replace your current shopping list, notes, ratings, and pantry on this device."))return;
-  const prior=[shoppingKey,reviewsKey,pantryKey].map(k=>localStorage.getItem(k));
+  const hasCalculators=Object.prototype.hasOwnProperty.call(data,"calculators");
+  if(hasCalculators&&(!data.calculators||typeof data.calculators!=="object"||Array.isArray(data.calculators)))throw Error("Invalid calculator backup");
+  const restoreKeys=hasCalculators?[shoppingKey,reviewsKey,pantryKey,calculatorKey]:[shoppingKey,reviewsKey,pantryKey];
+  const prior=restoreKeys.map(k=>localStorage.getItem(k));
   try{
-   if(!store(shoppingKey,data.shopping)||!store(reviewsKey,data.reviews)||!store(pantryKey,data.pantry))throw Error("Browser storage unavailable");
-  }catch(err){[shoppingKey,reviewsKey,pantryKey].forEach((k,i)=>prior[i]===null?localStorage.removeItem(k):localStorage.setItem(k,prior[i]));throw err;}
+   if(!store(shoppingKey,data.shopping)||!store(reviewsKey,data.reviews)||!store(pantryKey,data.pantry)||
+      (hasCalculators&&!store(calculatorKey,data.calculators)))throw Error("Browser storage unavailable");
+  }catch(err){restoreKeys.forEach((k,i)=>prior[i]===null?localStorage.removeItem(k):localStorage.setItem(k,prior[i]));throw err;}
   window.location.reload();
  }catch(err){pantryMessage("This backup couldn't be restored.");}
  finally{e.target.value="";}
