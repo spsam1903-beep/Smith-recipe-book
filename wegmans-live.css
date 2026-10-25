@@ -1,0 +1,33 @@
+
+/* Optional DeWitt Wegmans lookups: match retail products before showing prices */
+.wg-panel{background:#f8f0e5;border:1px solid #e0cfb9;border-radius:12px;padding:16px 19px;margin:14px 0}
+.wg-store-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.wg-store-title h3{font:normal 1.35rem Georgia,serif;margin:0}
+.wg-panel .wg-muted{margin:7px 0;font-size:.84rem;line-height:1.5}
+.wg-panel button{padding:10px 15px;background:#824b35;border:1px solid #824b35;border-radius:8px;color:white;cursor:pointer;font:600 .93rem system-ui}
+.wg-panel button:disabled{opacity:.55;cursor:wait}
+.wg-store-link{font-size:.87rem;margin-left:auto}
+.wg-summary{font:650 .98rem system-ui;color:#533a2e;margin:9px 0 2px}
+.wg-progress{font-size:.85rem;color:#6a513d;margin:6px 0}
+.wg-row{grid-column:2/-1;display:grid;grid-template-columns:minmax(210px,1fr) auto auto;align-items:center;gap:12px;padding:11px 0 3px;border-top:1px dashed #e5d8c8}
+.wg-match{min-width:0;display:flex;align-items:flex-start;flex-direction:column;gap:5px}
+.wg-product-label{font:600 .84rem system-ui;color:#62412f;overflow-wrap:anywhere}
+.wg-muted{color:#766759;font-size:.78rem}
+.wg-match button{padding:6px 10px;font-size:.81rem;margin:2px 0}
+.wg-price-group{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
+.wg-price-input{display:flex;flex-direction:column;gap:4px;font-size:.73rem;color:#665143}
+.wg-price-input input{width:92px;min-width:0!important;padding:7px 8px!important;font:inherit;background:#fff}
+.wg-price-input:last-child input{width:69px}
+.wg-row-total{font:650 .84rem system-ui;color:#584033;white-space:nowrap;text-align:right}
+#wg-choose{width:min(650px,calc(100% - 20px));max-height:85vh;overflow:auto;border:1px solid #ddd0c3;border-radius:14px;padding:24px 25px;box-shadow:0 22px 90px #0004}
+#wg-choose h3{font:normal 1.7rem Georgia,serif;margin:0 0 10px}
+.wg-choice{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-top:1px solid #e6d8c7}
+.wg-choice-copy{display:flex;flex-direction:column;gap:5px}
+.wg-choice-copy strong{font-size:.94rem;line-height:1.35}
+.wg-small{font-size:.81rem;color:#7a563c}
+.wg-choice button{white-space:nowrap}
+.wg-dialog-foot{display:flex;justify-content:flex-end;margin-top:13px}
+.wg-dialog-foot button{padding:8px 14px}
+@media(max-width:1000px){.wg-row{grid-template-columns:1fr 1fr}.wg-row-total{align-self:end}.wg-price-group{grid-column:1/2}}
+@media(max-width:520px){.wg-row{grid-template-columns:1fr}.wg-price-group,.wg-row-total{grid-column:1}.wg-row-total{text-align:left}}
+@media print{.wg-panel,.wg-match button,.wg-row-total,#wg-choose{display:none!important}.wg-price-input input{border:0!important}}
