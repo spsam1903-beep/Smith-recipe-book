@@ -66,7 +66,7 @@ function extraFields(x){
   packs:Number.isFinite(packs)&&packs>0&&packs<=100?packs:1,
   priceSource:x.priceSource==="wegmans"?"wegmans":x.priceSource==="manual"?"manual":"",
   wegmans:wg&&String(wg.storeNumber)==="30"&&wg.id?{
-   id:String(wg.id),name:String(wg.name||""),packSize:String(wg.packSize||""),
+   id:String(wg.id),pageId:wg.pageId===null||wg.pageId===undefined?null:String(wg.pageId),name:String(wg.name||""),packSize:String(wg.packSize||""),
    price:typeof wg.price==="number"&&Number.isFinite(wg.price)&&wg.price>=0?wg.price:null,
    aisle:String(wg.aisle||""),checkedAt:String(wg.checkedAt||""),storeNumber:"30"
   }:null
