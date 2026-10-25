@@ -20,7 +20,7 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
-</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"></head>
+</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"></head>
 <body><header><h1>My Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
 <button id="shopping-tab" type="button" aria-selected="false">🛒 Shopping List <span id="shop-badge"></span></button>
@@ -30,10 +30,15 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 <section class="grid" id="cards" aria-label="Recipe library"></section><p id="empty" hidden>No matching recipes found.</p></section>
 <section id="shopping-view" hidden>
 <div class="shop-head"><h2>Shopping List</h2><p class="muted" id="shop-count"></p></div>
-<div class="wegmans-panel">
-<strong>Shopping at Wegmans?</strong>
-<p>Choose your store and <b>In-Store</b> mode on Wegmans. Search for an item there to see its real aisle or section. Your list below is editable, but is separate from your Wegmans account. Use Copy next to an ingredient to paste its name into Wegmans search; add the aisle here if useful.</p>
-<a href="https://www.wegmans.com/shop/categories" target="_blank" rel="noopener noreferrer">Find items & aisles at Wegmans ↗</a>
+<div class="wg-panel">
+<div class="wg-store-title"><h3>DeWitt Wegmans · Store #30</h3>
+<a class="wg-store-link" id="wg-open-store" href="https://www.wegmans.com/stores/dewitt-ny" target="_blank" rel="noopener noreferrer">Open store on Wegmans ↗</a></div>
+<p class="wg-muted">6789 East Genesee St, Fayetteville, NY 13066 (serves the 13078 area). This is an unofficial, read-only product lookup for DeWitt in-store shopping. Choose a specific brand and package when multiple products match. No Wegmans login is required.</p>
+<button type="button" id="wg-refresh">Look up / refresh prices & aisles</button>
+<p class="wg-progress" id="wg-status" aria-live="polite">Use this button to search up to 30 unchecked list items. Matched products can be refreshed later.</p>
+<p class="wg-summary" id="wg-subtotal">No priced shopping items yet.</p>
+<p class="wg-muted" id="wg-subnote">Price estimates exclude unknown items, tax and weight adjustments. Package prices are not the same as recipe-portion costs.</p>
+<p class="wg-muted">Data is obtained from the same third-party search technology used by Wegmans, not an official public integration. It may be unavailable if Wegmans changes access or your browser blocks it. You can always edit aisle and prices manually.</p>
 </div>
 <form id="shop-form"><input id="shop-input" placeholder="Add an item, e.g. 1 lb rigatoni" aria-label="New shopping item" maxlength="250" required><button type="submit">+ Add item</button></form>
 <div class="shop-tools">
@@ -82,6 +87,7 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 <p id="pantry-status" class="pantry-message" aria-live="polite"></p>
 <p class="muted">Private notes, ratings, pantry data, and the shopping list remain in this browser, not your public GitHub repository. Export a backup to move your data to another device.</p>
 </section></main><footer>Made for everyday cooking · Unofficial copycat recipes are labeled as such.</footer>
+<dialog id="wg-choose" aria-label="Choose Wegmans product"><div id="wg-choose-content"></div><div class="wg-dialog-foot"><button type="button" class="action" onclick="document.getElementById('wg-choose').close()">Close</button></div></dialog>
 <dialog id="modal"><article class="detail" id="detail"></article></dialog>
 <dialog id="cook-dialog" aria-label="Step-by-step cooking mode"><div class="cook-mode">
 <div class="cook-header"><div><p class="eyebrow">Cooking mode</p><h2 id="cook-title"></h2><p id="cook-step-number" class="cook-steps"></p></div><button type="button" class="action" id="cook-close">✕ Close</button></div>
@@ -233,4 +239,4 @@ function openRecipe(r){
   modal.showModal();
 }
 search.addEventListener("input",draw);category.addEventListener("change",draw);modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});draw();
-</script><script src="./shopping.js"></script><script src="./extras.js"></script><script src="./calculators.js"></script></body></html>
+</script><script src="./shopping.js"></script><script src="./extras.js"></script><script src="./calculators.js"></script><script src="./wegmans-live.js"></script></body></html>
