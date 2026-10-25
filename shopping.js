@@ -79,7 +79,7 @@ function mergeInto(text,source,allowMerge=true){
    if((old.high===null)===(incoming.high===null)){
     const combined={...old,count:old.count+incoming.count,high:old.high===null?null:old.high+incoming.high};
     existing.text=build(combined);
-    if(source&&!existing.source.split(" · ").includes(source))existing.source+="$".replace("$",existing.source?" · ":"")+source;
+    if(source&&!existing.source.split(" · ").includes(source))existing.source+=(existing.source?" · ":"")+source;
     return "merged";
    }
   }
@@ -170,6 +170,11 @@ $("shop-merge").onclick=()=>{
  save();render();message("Combined "+(before-items.length)+" duplicate item(s) with matching units.");
 };
 window.groceryUtils={normalize:normalizedName,parsed,guess,mergeInto,refresh:render};
+window.addPantryShopping=(ingredient)=>{
+ const result=mergeInto(ingredient,"Pantry restock");
+ if(result!=="empty"){save();render();message(result==="merged"?"Restock item combined with your existing list.":"Pantry restock added to shopping list.");}
+ return result!=="empty";
+};
 window.addRecipeShopping=(list,source)=>{
  let added=0,merged=0,skipped=0;
  for(const ingredient of list){
