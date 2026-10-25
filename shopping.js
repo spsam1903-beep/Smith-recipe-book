@@ -58,11 +58,25 @@ function guess(t){
  if(/gouda|cream|milk|parmesan|cheese|butter|egg/.test(t))return "Dairy & Cheese";
  if(/frozen/.test(t))return "Frozen";if(/bread|baguette|roll/.test(t))return "Bakery";return "Pantry";
 }
+function extraFields(x){
+ const p=Number(x.price), packs=Number(x.packs);
+ const wg=x.wegmans&&typeof x.wegmans==="object" ? x.wegmans : null;
+ return {
+  price:x.price===null||x.price===undefined||x.price===""||!Number.isFinite(p)||p<0?null:p,
+  packs:Number.isFinite(packs)&&packs>0&&packs<=100?packs:1,
+  priceSource:x.priceSource==="wegmans"?"wegmans":x.priceSource==="manual"?"manual":"",
+  wegmans:wg&&String(wg.storeNumber)==="30"&&wg.id?{
+   id:String(wg.id),name:String(wg.name||""),packSize:String(wg.packSize||""),
+   price:typeof wg.price==="number"&&Number.isFinite(wg.price)&&wg.price>=0?wg.price:null,
+   aisle:String(wg.aisle||""),checkedAt:String(wg.checkedAt||""),storeNumber:"30"
+  }:null
+ };
+}
 let items=[];
 try{const val=JSON.parse(localStorage.getItem(KEY)||"[]");
  if(Array.isArray(val))items=val.filter(x=>x&&typeof x.text==="string").map(x=>({
   id:String(x.id||uuid()),text:x.text,dept:dpts.includes(x.dept)?x.dept:"Other",
-  aisle:String(x.aisle||""),source:String(x.source||""),done:!!x.done
+  aisle:String(x.aisle||""),source:String(x.source||""),done:!!x.done,...extraFields(x)
  }));
 }catch(e){message("Saved list could not be read. Existing backup files are unaffected.");}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(items));}catch(e){message("Browser storage unavailable; export your list to keep it.");}}
@@ -86,7 +100,7 @@ function mergeInto(text,source,allowMerge=true){
   const plain=items.find(x=>!x.done&&incoming.count===null&&parsed(x.text).count===null&&parsed(x.text).key===incoming.key&&incoming.key);
   if(plain){if(source&&!plain.source.split(" · ").includes(source))plain.source+=(plain.source?" · ":"")+source;return "merged";}
  }
- items.push({id:uuid(),text,dept:guess(text),aisle:"",done:false,source:source||""});
+ items.push({id:uuid(),text,dept:guess(text),aisle:"",done:false,source:source||"",price:null,packs:1,priceSource:"",wegmans:null});
  return "added";
 }
 function go(view){
@@ -130,7 +144,12 @@ function row(item,list){
  const li=element("li",list,item.done?"done":"");
  const cb=element("input",li);cb.type="checkbox";cb.checked=item.done;cb.setAttribute("aria-label","Purchased "+item.text);cb.onchange=()=>{item.done=cb.checked;save();render();};
  const name=element("input",li,"shop-name");name.type="text";name.value=item.text;name.maxLength=250;name.setAttribute("aria-label","Edit item");
- name.onchange=()=>{item.text=name.value.trim();if(!item.text){items=items.filter(x=>x.id!==item.id);save();render();return;}save();render();};
+ name.onchange=()=>{
+ const updated=name.value.trim();
+ if(!updated){items=items.filter(x=>x.id!==item.id);save();render();return;}
+ if(updated!==item.text && item.wegmans){item.wegmans=null;if(item.priceSource==="wegmans"){item.price=null;item.priceSource="";}}
+ item.text=updated;save();render();
+};
  const dept=element("select",li);dept.setAttribute("aria-label","Department");
  dpts.forEach(d=>{const opt=element("option",dept,"",d);opt.value=d;});
  dept.value=item.dept;dept.onchange=()=>{item.dept=dept.value;save();render();};
@@ -144,6 +163,7 @@ function row(item,list){
  }
  const del=element("button",actions,"","Remove");del.type="button";del.onclick=()=>{items=items.filter(x=>x.id!==item.id);save();render();};
  if(item.source)element("small",li,"source-note","From: "+item.source);
+ if(window.wegmansEnhanceRow)window.wegmansEnhanceRow(item,li);
 }
 $("shop-form").onsubmit=e=>{e.preventDefault();const input=$("shop-input");if(mergeInto(input.value,"Manually added")!=="empty"){input.value="";save();render();message("Item added to shopping list.");}};
 $("shop-clear").onclick=()=>{const n=items.filter(x=>x.done).length;if(!n)return message("No checked-off items.");if(window.confirm("Remove "+n+" checked-off items?")){items=items.filter(x=>!x.done);save();render();}};
@@ -152,7 +172,7 @@ $("shop-export").onclick=()=>{const blob=new Blob([JSON.stringify({kind:KEY,item
 $("shop-import").onchange=async e=>{const file=e.target.files[0];if(!file)return;try{
  const data=JSON.parse(await file.text());if(data.kind!==KEY||!Array.isArray(data.items))throw Error("Invalid backup");
  if(!window.confirm("Replace your shopping list with this backup?"))return;
- items=data.items.filter(x=>x&&typeof x.text==="string").map(x=>({id:uuid(),text:x.text,aisle:String(x.aisle||""),dept:dpts.includes(x.dept)?x.dept:"Other",done:!!x.done,source:String(x.source||"")}));
+ items=data.items.filter(x=>x&&typeof x.text==="string").map(x=>({id:uuid(),text:x.text,aisle:String(x.aisle||""),dept:dpts.includes(x.dept)?x.dept:"Other",done:!!x.done,source:String(x.source||""),...extraFields(x)}));
  save();render();message("Backup imported.");
 }catch(err){message("Couldn't import that shopping list backup.");}finally{e.target.value="";}};
 $("shop-print").onclick=()=>{document.body.classList.add("print-shop");window.print();};
@@ -166,10 +186,11 @@ $("shop-merge").onclick=()=>{
   const cur=parsed(target.text),res={...cur,count:cur.count+p.count,high:(cur.high===null&&p.high===null)?null:(cur.high??cur.count)+(p.high??p.count)};
   target.text=build(res);if(x.source&&!target.source.includes(x.source))target.source+=(target.source?" · ":"")+x.source;
   if(!target.aisle&&x.aisle)target.aisle=x.aisle;
+  if(!target.wegmans&&x.wegmans){target.wegmans=x.wegmans;target.price=x.price;target.priceSource=x.priceSource;target.packs=x.packs;}
  }
  save();render();message("Combined "+(before-items.length)+" duplicate item(s) with matching units.");
 };
-window.groceryUtils={normalize:normalizedName,parsed,guess,mergeInto,refresh:render};
+window.groceryUtils={normalize:normalizedName,parsed,guess,mergeInto,refresh:render,getItems:()=>items,save,extraFields};
 window.addPantryShopping=(ingredient)=>{
  const result=mergeInto(ingredient,"Pantry restock");
  if(result!=="empty"){save();render();message(result==="merged"?"Restock item combined with your existing list.":"Pantry restock added to shopping list.");}
