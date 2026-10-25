@@ -31,3 +31,9 @@
 @media(max-width:1000px){.wg-row{grid-template-columns:1fr 1fr}.wg-row-total{align-self:end}.wg-price-group{grid-column:1/2}}
 @media(max-width:520px){.wg-row{grid-template-columns:1fr}.wg-price-group,.wg-row-total{grid-column:1}.wg-row-total{text-align:left}}
 @media print{.wg-panel,.wg-match button,.wg-row-total,#wg-choose{display:none!important}.wg-price-input input{border:0!important}}
+
+/* Clickable product names in Wegmans match suggestions and saved matches */
+.wg-product-link{display:inline-block;color:#76412e!important;text-decoration:underline;text-underline-offset:3px;font-weight:650;font-size:.94rem;line-height:1.35;overflow-wrap:anywhere}
+.wg-product-link:hover,.wg-visit-link:hover{color:#a05b37!important}
+.wg-product-link:focus-visible,.wg-visit-link:focus-visible{outline:2px solid #8b4934;outline-offset:3px;border-radius:3px}
+.wg-visit-link{display:inline-block;color:#76412e!important;font-size:.81rem;text-decoration:underline;text-underline-offset:2px;margin-top:2px}
