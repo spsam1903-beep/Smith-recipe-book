@@ -20,7 +20,7 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
-</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"></head>
+</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"></head>
 <body><header><h1>My Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
 <button id="shopping-tab" type="button" aria-selected="false">🛒 Shopping List <span id="shop-badge"></span></button>
@@ -131,6 +131,7 @@ function openRecipe(r){
   let mode="classic";
   let ingredientSpans=[];
   let versionBtns=[];
+  let calcController=null;
   const chosen=()=>mode==="protein"&&high
     ? {...r,...high,id:r.id+"--higher-protein",title:r.title+" (Higher Protein)"}
     : r;
@@ -200,6 +201,7 @@ function openRecipe(r){
     portionMeta.textContent=recipe.time+" · "+serves+" servings";
     ingredientSpans.forEach((span,i)=>span.textContent=scaleIngredient(recipe.ingredients[i],factor));
     presetButtons.forEach(([amount,btn])=>btn.classList.toggle("selected",amount===factor));
+    if(calcController)calcController.refresh();
   }
   function renderVersion(){
     const recipe=chosen();
@@ -226,8 +228,9 @@ function openRecipe(r){
   }
   slider.addEventListener("input",updateScale);
   renderVersion();
+  if(window.attachRecipeCalculator)calcController=window.attachRecipeCalculator(r,detail,chosen,()=>Number(slider.value),scaleIngredient);
   if(window.attachRecipeExtras)window.attachRecipeExtras(r,detail,chosen);
   modal.showModal();
 }
 search.addEventListener("input",draw);category.addEventListener("change",draw);modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});draw();
-</script><script src="./shopping.js"></script><script src="./extras.js"></script></body></html>
+</script><script src="./shopping.js"></script><script src="./extras.js"></script><script src="./calculators.js"></script></body></html>
