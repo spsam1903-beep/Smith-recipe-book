@@ -97,6 +97,7 @@ window.recipeCardBadge=(r,card)=>{
 window.attachRecipeExtras=(r,detail)=>{
  const start=el("button",detail,"start-cooking","▶ Start step-by-step cooking mode");
  start.type="button";start.onclick=()=>openCooking(r);
+ const recipeColumns=detail.querySelector(".columns");if(recipeColumns)detail.insertBefore(start,recipeColumns);
  const panel=el("section",detail,"personal-panel");
  el("h3",panel,"","Your rating & cooking notes");
  el("p",panel,"personal-sub","Private to this browser. Keep tweaks and improvements for next time.");
