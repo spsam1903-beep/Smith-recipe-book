@@ -76,8 +76,8 @@ function mergeInto(text,source,allowMerge=true){
     parsed(x.text).count!==null);
   if(existing){
    const old=parsed(existing.text);
-   if((old.high===null)===(incoming.high===null)){
-    const combined={...old,count:old.count+incoming.count,high:old.high===null?null:old.high+incoming.high};
+   {
+    const combined={...old,count:old.count+incoming.count,high:(old.high===null&&incoming.high===null)?null:(old.high??old.count)+(incoming.high??incoming.count)};
     existing.text=build(combined);
     if(source&&!existing.source.split(" · ").includes(source))existing.source+=(existing.source?" · ":"")+source;
     return "merged";
@@ -161,9 +161,9 @@ $("shop-sort").addEventListener("change",render);
 $("shop-merge").onclick=()=>{
  const before=items.length,old=items.map(x=>({...x}));items=[];
  for(const x of old){if(x.done){items.push(x);continue;}
-  const p=parsed(x.text);const target=items.find(y=>!y.done&&parsed(y.text).key===p.key&&parsed(y.text).unit===p.unit&&p.count!==null&&parsed(y.text).count!==null&&((p.high===null)===(parsed(y.text).high===null)));
+  const p=parsed(x.text);const target=items.find(y=>!y.done&&parsed(y.text).key===p.key&&parsed(y.text).unit===p.unit&&p.count!==null&&parsed(y.text).count!==null);
   if(!target){items.push(x);continue;}
-  const cur=parsed(target.text),res={...cur,count:cur.count+p.count,high:p.high===null?null:cur.high+p.high};
+  const cur=parsed(target.text),res={...cur,count:cur.count+p.count,high:(cur.high===null&&p.high===null)?null:(cur.high??cur.count)+(p.high??p.count)};
   target.text=build(res);if(x.source&&!target.source.includes(x.source))target.source+=(target.source?" · ":"")+x.source;
   if(!target.aisle&&x.aisle)target.aisle=x.aisle;
  }
@@ -184,7 +184,7 @@ window.addRecipeShopping=(list,source)=>{
  }
  save();go("shopping");
  message(added+" added, "+merged+" combined with existing items"+(skipped?", "+skipped+" skipped (already in pantry)":"")+".");
- return (added+merged)>0;
+ return list.length>0;
 };
 render();
 })();
