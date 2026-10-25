@@ -1,0 +1,26 @@
+
+[hidden]{display:none!important}
+.tabs{display:flex;gap:10px;background:#fffdfa;padding:12px max(24px,calc((100vw - 1160px)/2));border-bottom:1px solid var(--line)}
+.tabs button{cursor:pointer;border:0;background:transparent;color:var(--muted);padding:10px 20px;border-radius:8px;font:600 1rem system-ui}
+.tabs button.active{background:#f3e5d5;color:#704332}
+.shop-head h2{font:normal 2rem Georgia,serif;margin:0}.muted{color:var(--muted);font-size:.89rem}
+.wegmans-panel{background:#f4e6d7;border:1px solid #dfc9b8;border-radius:12px;padding:18px 20px;margin:22px 0}
+.wegmans-panel p{color:#675446;margin:9px 0 15px}
+.wegmans-panel a{display:inline-block;background:#714431;color:#fff;padding:10px 15px;border-radius:8px;text-decoration:none}
+#shop-form{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 13px}#shop-form input{flex:1}
+#shop-form button,.shop-tools button{padding:10px 14px;background:#fffdfa;border:1px solid var(--line);border-radius:8px;cursor:pointer}
+#shop-form button{background:#714431;color:white}
+.shop-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.shop-list{padding:0;list-style:none;margin:0}
+.shop-list li{display:grid;grid-template-columns:25px minmax(170px,2fr) minmax(120px,1fr) minmax(115px,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);background:#fffdfa;border-radius:10px;padding:12px;margin:8px 0}
+.shop-list input[type=checkbox]{min-width:0;width:18px;height:18px;accent-color:var(--accent)}
+.shop-list input[type=text],.shop-list select{min-width:0;width:100%;padding:9px}
+.shop-list li.done .shop-name{text-decoration:line-through;color:var(--muted)}
+.shop-list .actions{display:flex;gap:7px}.shop-list .actions button{border:1px solid var(--line);background:#fff;padding:8px;border-radius:6px;cursor:pointer}
+.shop-list .source-note{grid-column:2/-1;font-size:.75rem;color:var(--muted)}
+.shop-section-title{font:normal 1.4rem Georgia,serif;margin:24px 0 12px}
+.shop-recipe-button{margin:12px 0;background:#f6e9d8!important;color:#714431!important;border:1px solid #d8bba0!important;font-weight:650}
+@media(max-width:850px){.shop-list li{grid-template-columns:25px minmax(130px,1fr) minmax(100px,1fr)}.shop-list .shop-name,.shop-list .actions,.shop-list .source-note{grid-column:2/-1}}
+@media(max-width:480px){.shop-list li{grid-template-columns:25px 1fr}.shop-list .shop-name,.shop-list select,.shop-list .shop-aisle,.shop-list .actions,.shop-list .source-note{grid-column:2}}
+@media print{body.print-shop main,body.print-shop #shopping-view{display:block!important}body.print-shop header,body.print-shop footer,body.print-shop .tabs,body.print-shop #recipes-view,body.print-shop .wegmans-panel,body.print-shop .shop-tools,body.print-shop #shop-form,body.print-shop .actions,body.print-shop .muted{display:none!important}
+body.print-shop .shop-list li{border:0;border-bottom:1px solid #ddd}body.print-shop .shop-list input,body.print-shop .shop-list select{border:0;appearance:none;background:none}}
