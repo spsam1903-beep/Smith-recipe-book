@@ -156,13 +156,13 @@
   }
   let selectedMode=savedMode(),current=null;
   function make(parent,tag,cls,content){
-    // Windows may show flag emoji as "US" instead of the flag. A real image
-    // works reliably and stays completely local to this free GitHub Pages site.
+    // Windows may show flag emoji as "US" instead of the flag. Twemoji artwork
+    // renders visually as a real flag across Windows and other platforms.
     const isUSFlag=content==="🇺🇸";
     const node=document.createElement(isUSFlag?"img":tag);
     node.className=(cls||"")+(isUSFlag?" holiday-us-flag":"");
     if(isUSFlag){
-      node.src="./us-flag.svg";
+      node.src="./us-flag-emoji.svg?v=20261025";
       node.alt="US flag";
       node.title="US flag";
       node.decoding="async";
