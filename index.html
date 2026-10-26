@@ -20,7 +20,7 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
-</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><link rel="stylesheet" href="./holiday-decor.css"><script src="./seasonal-theme.js"></script><script src="./holiday-decor.js"></script></head>
+</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><link rel="stylesheet" href="./holiday-decor.css?v=20261025b"><script src="./seasonal-theme.js"></script><script src="./holiday-decor.js?v=20261025b"></script></head>
 <body><header><h1>Smith Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p><div id="holiday-decor" class="site-holiday" aria-hidden="true" hidden></div></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
 <button id="shopping-tab" type="button" aria-selected="false">🛒 Shopping List <span id="shop-badge"></span></button>
@@ -39,30 +39,31 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 </div>
 <div class="holiday-picker">
 <label for="holiday-decor-select">Decor</label>
+<img class="holiday-menu-flag" src="./us-flag-emoji.svg?v=20261025" alt="US flag" width="24" height="24">
 <select id="holiday-decor-select" aria-label="Holiday decorations">
 <option value="auto">Automatic</option>
 <option value="none">Off</option>
 <optgroup label="January – March">
 <option value="newyear">🎉 New Year's</option>
 <option value="valentine">💝 Valentine's Day</option>
-<option value="presidents">🏛️ Presidents' Day</option>
+<option value="presidents">US Presidents' Day</option>
 <option value="stpatricks">☘️ St. Patrick's Day</option>
 <option value="easter">🐰 Easter</option>
 </optgroup>
 <optgroup label="April – June">
 <option value="earthday">🌎 Earth Day</option>
 <option value="mothersday">💐 Mother's Day</option>
-<option value="memorial">🎖️ Memorial Day</option>
-<option value="flagday">🦅 Flag Day</option>
+<option value="memorial">US Memorial Day</option>
+<option value="flagday">US Flag Day</option>
 <option value="fathersday">💙 Father's Day</option>
 </optgroup>
 <optgroup label="July – September">
-<option value="independence">🎆 Fourth of July</option>
-<option value="labor">🧰 Labor Day</option>
+<option value="independence">US Fourth of July</option>
+<option value="labor">US Labor Day</option>
 </optgroup>
 <optgroup label="October – December">
 <option value="halloween">🎃 Halloween</option>
-<option value="veterans">🎖️ Veterans Day</option>
+<option value="veterans">US Veterans Day</option>
 <option value="thanksgiving">🦃 Thanksgiving</option>
 <option value="christmas">🎄 Christmas</option>
 </optgroup>
@@ -129,7 +130,7 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 </div>
 <p id="pantry-status" class="pantry-message" aria-live="polite"></p>
 <p class="muted">Private notes, ratings, pantry data, and the shopping list remain in this browser, not your public GitHub repository. Export a backup to move your data to another device.</p>
-</section></main><footer>Made for everyday cooking · Unofficial copycat recipes are labeled as such.</footer>
+</section></main><footer>Made for everyday cooking · Unofficial copycat recipes are labeled as such. <span class="flag-credit">· Flag emoji artwork: <a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener noreferrer">Twemoji</a> (CC BY 4.0)</span></footer>
 <dialog id="wg-choose" aria-label="Choose Wegmans product"><div id="wg-choose-content"></div><div class="wg-dialog-foot"><button type="button" class="action" id="wg-close">Close</button></div></dialog>
 <dialog id="modal"><article class="detail" id="detail"></article></dialog>
 <dialog id="cook-dialog" aria-label="Step-by-step cooking mode"><div class="cook-mode">
