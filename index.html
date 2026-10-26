@@ -20,8 +20,8 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
-</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><script src="./seasonal-theme.js"></script></head>
-<body><header><h1>Smith Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p></header><nav class="tabs" aria-label="Website navigation">
+</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><link rel="stylesheet" href="./holiday-decor.css"><script src="./seasonal-theme.js"></script><script src="./holiday-decor.js"></script></head>
+<body><header><h1>Smith Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p><div id="holiday-decor" class="site-holiday" aria-hidden="true" hidden></div></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
 <button id="shopping-tab" type="button" aria-selected="false">🛒 Shopping List <span id="shop-badge"></span></button>
 <button id="pantry-tab" type="button" aria-selected="false">🥫 My Pantry</button>
@@ -36,6 +36,16 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 <option value="winter">❄️ Winter</option>
 </select>
 <span id="season-theme-note" hidden></span>
+</div>
+<div class="holiday-picker">
+<label for="holiday-decor-select">Decor</label>
+<select id="holiday-decor-select" aria-label="Holiday decorations">
+<option value="auto">Automatic</option>
+<option value="none">Off</option>
+<option value="halloween">🎃 Halloween</option>
+<option value="thanksgiving">🦃 Thanksgiving</option>
+<option value="christmas">🎄 Christmas</option>
+</select>
 </div>
 </nav><main><section id="recipes-view"><div class="intro"><div><h2>Recipes worth keeping</h2><p>Favorite dishes in one place. Add more anytime.</p></div><span id="count"></span></div>
 <div class="controls"><input id="search" placeholder="Search dishes or ingredients…" aria-label="Search recipes"><select id="category" aria-label="Filter by category"><option value="">All categories</option></select></div>
