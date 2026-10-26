@@ -53,7 +53,7 @@
       floaters:["⭐","✦","✨","🕊️","⭐","✧","⭐"],glow:"#8baac559",trim:"#6f8aaf49"
     },
     flagday:{
-      label:"Flag Day",icons:["🇺🇸","⭐","🎏"],
+      label:"Flag Day",icons:["🇺🇸","⭐","🦅"],
       garland:["🇺🇸","⭐","🇺🇸","✨","⭐","🇺🇸","⭐","✨","🇺🇸","⭐","🇺🇸"],
       floaters:["⭐","✦","✨","⭐","✦","✨","⭐"],glow:"#81a2c759",trim:"#6088b445"
     },
@@ -123,7 +123,7 @@
     const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4);
     const e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3);
     const h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4;
-    const l=(32+2*e+2*i-h-k+7*7)%7; // 7*7 is congruent to 0 (mod 7).
+    const l=(32+2*e+2*i-h-k)%7;
     const m=Math.floor((a+11*h+22*l)/451);
     const month=Math.floor((h+l-7*m+114)/31);
     const day=(h+l-7*m+114)%31+1;
