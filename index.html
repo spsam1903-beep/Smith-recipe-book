@@ -20,6 +20,32 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
+/* Surprise Me: cookbook discovery, with the current seasonal color palette. */
+button.surprise-button{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  min-height:49px;padding:11px 20px;border-radius:10px;
+  border:1px solid var(--accent);color:#fff;background:var(--accent);
+  font-weight:650;letter-spacing:.015em;cursor:pointer;
+  box-shadow:0 3px 9px #21180f18;
+  transition:transform .15s ease,box-shadow .15s ease,opacity .15s ease;
+}
+button.surprise-button:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 6px 16px #21180f27;}
+button.surprise-button:disabled{opacity:.46;cursor:not-allowed;box-shadow:none;}
+button.surprise-button:focus-visible,.surprise-reroll:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+.surprise-intro{
+  margin:0 0 13px;
+  padding:10px 13px;border-radius:9px;
+  background:var(--season-soft,#f7efe4);border:1px solid var(--line);
+  color:var(--ink);font-size:.89rem;
+}
+.surprise-reroll{white-space:nowrap;}
+.surprise-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+@media(max-width:650px){
+  .controls button.surprise-button{width:100%;}
+  .surprise-actions{align-items:flex-end;flex-direction:column;}
+}
+@media(prefers-reduced-motion:reduce){button.surprise-button{transition:none;}}
+@media print{button.surprise-button,.surprise-intro,.surprise-reroll{display:none!important;}}
 </style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><link rel="stylesheet" href="./holiday-decor.css?v=20261025b"><script src="./seasonal-theme.js"></script><script src="./holiday-decor.js?v=20261025b"></script></head>
 <body><header><h1>Smith Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p><div id="holiday-decor" class="site-holiday" aria-hidden="true" hidden></div></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
@@ -70,7 +96,7 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 </select>
 </div>
 </nav><main><section id="recipes-view"><div class="intro"><div><h2>Recipes worth keeping</h2><p>Favorite dishes in one place. Add more anytime.</p></div><span id="count"></span></div>
-<div class="controls"><input id="search" placeholder="Search dishes or ingredients…" aria-label="Search recipes"><select id="category" aria-label="Filter by category"><option value="">All categories</option></select></div>
+<div class="controls"><input id="search" placeholder="Search dishes or ingredients…" aria-label="Search recipes"><select id="category" aria-label="Filter by category"><option value="">All categories</option></select><button type="button" id="surprise-me" class="surprise-button" title="Choose a recipe at random from these results">🎲 Surprise Me</button></div>
 <section class="grid" id="cards" aria-label="Recipe library"></section><p id="empty" hidden>No matching recipes found.</p></section>
 <section id="shopping-view" hidden>
 <div class="shop-head"><h2>Shopping List</h2><p class="muted" id="shop-count"></p></div>
@@ -147,7 +173,8 @@ button.scale-chip.selected{background:var(--accent);color:white;border-color:var
 <script>
 const recipes=[{"id":"mcguires-potato-skins","title":"McGuire’s-Style Irish Potato Skins","category":"Appetizers","time":"75 min","servings":4,"source":"Unofficial copycat inspired by McGuire’s Irish Pub, Destin, FL.","sourceUrl":"https://www.mcguiresirishpub.com/items/irish-potato-skins","description":"Crispy russet potato shells loaded with smoky Gouda and applewood-smoked bacon.","ingredients":["4 medium russet potatoes","6–8 slices applewood-smoked bacon","6 oz smoked Gouda, freshly shredded","2 tbsp melted butter or reserved bacon fat","1 tbsp neutral oil","½ tsp kosher salt","¼ tsp black pepper","Sour cream, optional"],"steps":["Heat oven to 425°F. Scrub and dry potatoes, prick with a fork, then rub with oil and salt. Bake on the rack 45–60 minutes until tender.","Cool until safe to handle, halve lengthwise, and scoop out centers, leaving about ¼ inch potato inside each shell.","Brush both sides with melted butter or bacon fat. Bake skin-side up at 450°F for 8–10 minutes, flip, then bake 5–7 minutes more until crisp.","Cook bacon until crisp and crumble. Fill skins with smoked Gouda, then top with bacon.","Bake at 425°F for 5–8 minutes, until cheese melts. Optional: broil briefly while watching closely. Serve warm."],"tips":"Air fryer: crisp empty shells at 400°F for 6–8 minutes; add fillings and heat at 350°F for 3–5 minutes."},{"id":"rustic-wheelhouse-bolognese","title":"Rustic Wheelhouse–Style Rigatoni Bolognese","category":"Pasta","time":"2 hr 20 min","servings":4,"source":"Unofficial copycat inspired by the Rigatoni Bolognese at Rustic Wheelhouse, Chester, NY. The exact restaurant recipe is unverified; this version reflects the diner's description of a thick, creamy orange meat sauce.","sourceUrl":"","description":"Rigatoni coated in a thick, creamy orange beef-and-pork Bolognese.","ingredients":["1 lb rigatoni","¾ lb ground beef (80/20)","¼ lb ground pork","2 tbsp olive oil","1 small yellow onion, finely diced","1 carrot, finely diced","1 celery stalk, finely diced","3 garlic cloves, minced","2 tbsp tomato paste","½ cup dry white wine (or broth)","14–15 oz crushed tomatoes","¾ cup whole milk","⅓ cup heavy cream (add more for a lighter orange sauce)","Beef stock or water, only as needed","1 bay leaf","Salt and black pepper","Finely grated Parmesan, to finish"],"steps":["Heat oil over medium-low heat. Cook finely diced onion, carrot, and celery for 8–10 minutes until soft. Stir in garlic for 30 seconds.","Add beef and pork and cook until browned, breaking the meat into very small pieces. Stir in tomato paste and cook about 2 minutes.","Deglaze with white wine and simmer until mostly evaporated. Add tomatoes, milk, and bay leaf. Bring to a gentle simmer.","Simmer uncovered or partially covered over low heat for 90–120 minutes, stirring regularly, until very thick. Add only a splash of stock if it starts sticking. A spoon dragged through should leave a brief trail.","Stir in the measured heavy cream during the final 10 minutes, adding a little more if needed for the orange color and creamy finish. Season and remove bay leaf.","Boil rigatoni in salted water until 1–2 minutes shy of al dente. Reserve pasta water and drain.","Toss rigatoni directly with the sauce for 1–2 minutes. Add pasta water only 1–2 tablespoons at a time if necessary, then stir in Parmesan. The sauce should grip the pasta without pooling."],"tips":"Make the sauce a day ahead for deeper flavor. Refrigerate promptly and reheat thoroughly. Freezes well before adding cream."}];
 const icons={"Appetizers":"🥔","Pasta":"🍝","Budget Meals":"🥟"};
-const cards=document.getElementById("cards"),search=document.getElementById("search"),category=document.getElementById("category"),modal=document.getElementById("modal"),detail=document.getElementById("detail");
+const cards=document.getElementById("cards"),search=document.getElementById("search"),category=document.getElementById("category"),modal=document.getElementById("modal"),detail=document.getElementById("detail"),surpriseButton=document.getElementById("surprise-me");
+let previousSurpriseId=null;
 
 const fractions={"¼":1/4,"½":1/2,"¾":3/4,"⅓":1/3,"⅔":2/3,"⅛":1/8,"⅜":3/8,"⅝":5/8,"⅞":7/8,"⅙":1/6,"⅚":5/6};
 const quantityPattern="(?:[0-9]+(?:\\.[0-9]+)?(?:\\s+[¼½¾⅓⅔⅛⅜⅝⅞⅙⅚])?|[¼½¾⅓⅔⅛⅜⅝⅞⅙⅚])";
@@ -173,9 +200,24 @@ function scaleIngredient(ingredient,multiplier){
 function el(tag,cls,txt){const node=document.createElement(tag);if(cls)node.className=cls;if(txt!==undefined)node.textContent=txt;return node}
 function add(parent,tag,cls,txt){const x=el(tag,cls,txt);parent.appendChild(x);return x}
 for(const c of [...new Set(recipes.map(r=>r.category))].sort()){let opt=add(category,"option","",c);opt.value=c}
-function draw(){const term=search.value.toLowerCase().trim(),cat=category.value;const filtered=recipes.filter(r=>(!cat||r.category===cat)&&(!term||[r.title,r.description,r.category,...r.ingredients].join(" ").toLowerCase().includes(term)));cards.replaceChildren();document.getElementById("count").textContent=filtered.length+" recipes";document.getElementById("empty").hidden=filtered.length>0;
+function matchingRecipes(){
+  const term=search.value.toLowerCase().trim(),cat=category.value;
+  return recipes.filter(r=>(!cat||r.category===cat)&&(!term||[r.title,r.description,r.category,...r.ingredients].join(" ").toLowerCase().includes(term)));
+}
+function draw(){const filtered=matchingRecipes();cards.replaceChildren();document.getElementById("count").textContent=filtered.length+" recipes";document.getElementById("empty").hidden=filtered.length>0;
+surpriseButton.disabled=filtered.length===0;
+surpriseButton.title=filtered.length?"Choose a random recipe from these "+filtered.length+" results":"No matching recipes to surprise you with";
 filtered.forEach(r=>{let b=add(cards,"button","recipe-card");b.type="button";add(b,"div","card-art",icons[r.category]||"🍲");let c=add(b,"div","card-content");add(c,"div","eyebrow",r.category);add(c,"h3","",r.title);add(c,"p","",r.description);add(c,"div","meta",r.time+" · "+r.servings+" servings");if(window.PROTEIN_VARIANTS?.[r.id])add(c,"span","protein-tag","Higher-protein option available");if(window.recipeCardBadge)window.recipeCardBadge(r,c);b.onclick=()=>openRecipe(r)})}
-function openRecipe(r){
+function surpriseMe(){
+  const matches=matchingRecipes();
+  if(!matches.length)return;
+  // Avoid immediately repeating the last surprise whenever there is a choice.
+  const candidates=matches.length>1?matches.filter(r=>r.id!==previousSurpriseId):matches;
+  const picked=candidates[Math.floor(Math.random()*candidates.length)];
+  previousSurpriseId=picked.id;
+  openRecipe(picked,{surprise:true});
+}
+function openRecipe(r,options={}){
   detail.replaceChildren();
   const high=window.PROTEIN_VARIANTS?.[r.id]||null;
   let mode="classic";
@@ -185,10 +227,19 @@ function openRecipe(r){
   const chosen=()=>mode==="protein"&&high
     ? {...r,...high,id:r.id+"--higher-protein",title:r.title+" (Higher Protein)"}
     : r;
+  if(options.surprise)add(detail,"p","surprise-intro","🎲 A surprise from the Smith Recipe Book — could this be your next family favorite?");
   const top=add(detail,"div","dialog-top"),heading=add(top,"div");
   add(heading,"div","eyebrow",r.category);
   add(heading,"h2","",r.title);
-  const close=add(top,"button","action","✕ Close");close.onclick=()=>modal.close();
+  const actions=add(top,"div","surprise-actions");
+  if(options.surprise){
+    const reroll=add(actions,"button","action surprise-reroll","🎲 Pick another");
+    reroll.type="button";
+    reroll.disabled=matchingRecipes().length<2;
+    reroll.title=reroll.disabled?"Only one recipe matches your filters":"Find another surprise recipe";
+    reroll.onclick=surpriseMe;
+  }
+  const close=add(actions,"button","action","✕ Close");close.type="button";close.onclick=()=>modal.close();
   const summary=add(detail,"p","summary",r.description);
   const portionMeta=add(detail,"p","meta",r.time+" · "+r.servings+" servings");
   let versionDescription=null,versionChanges=null;
@@ -280,7 +331,8 @@ function openRecipe(r){
   renderVersion();
   if(window.attachRecipeCalculator)calcController=window.attachRecipeCalculator(r,detail,chosen,()=>Number(slider.value),scaleIngredient);
   if(window.attachRecipeExtras)window.attachRecipeExtras(r,detail,chosen);
-  modal.showModal();
+  if(!modal.open)modal.showModal();
 }
+surpriseButton.addEventListener("click",surpriseMe);
 search.addEventListener("input",draw);category.addEventListener("change",draw);modal.addEventListener("click",e=>{if(e.target===modal)modal.close()});draw();
 </script><script src="./shopping.js"></script><script src="./extras.js"></script><script src="./calculators.js"></script><script src="./wegmans-live.js"></script></body></html>
