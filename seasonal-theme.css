@@ -1,0 +1,81 @@
+/* Seasonal themes for Smith Recipe Book.
+   Auto mode uses Northern Hemisphere meteorological seasons:
+   Spring Mar-May, Summer Jun-Aug, Fall Sep-Nov, Winter Dec-Feb.
+   Palette overlays intentionally preserve contrast and all existing content. */
+:root {
+  --season-header:#332b26;
+  --season-header-glow:#6b463a70;
+  --season-soft:#f7efe4;
+  --season-strong:#703821;
+  --season-art1:#e5cfaa;
+  --season-art2:#b77e5c;
+}
+html[data-season="spring"] {
+  --ink:#29392d;--muted:#617263;--cream:#f4f8f2;--paper:#fffefb;
+  --line:#d6e3d4;--accent:#507650;
+  --season-header:#34533e;--season-header-glow:#97bf7f55;
+  --season-soft:#e8f2e4;--season-strong:#345b3d;
+  --season-art1:#d4e8bd;--season-art2:#dcafbd;
+}
+html[data-season="summer"] {
+  --ink:#233a41;--muted:#5c7479;--cream:#f1f8f7;--paper:#fffefa;
+  --line:#d5e6e6;--accent:#266a76;
+  --season-header:#234e63;--season-header-glow:#eac87e52;
+  --season-soft:#e3f2ef;--season-strong:#1c5967;
+  --season-art1:#b9e4df;--season-art2:#efd28b;
+}
+html[data-season="fall"] {
+  --ink:#30251c;--muted:#766759;--cream:#faf6ef;--paper:#fffdfa;
+  --line:#e8ded1;--accent:#8b4934;
+  --season-header:#332b26;--season-header-glow:#ac6f4752;
+  --season-soft:#f7efe4;--season-strong:#703821;
+  --season-art1:#e5cfaa;--season-art2:#b77e5c;
+}
+html[data-season="winter"] {
+  --ink:#253745;--muted:#617380;--cream:#f2f6fa;--paper:#fcfdff;
+  --line:#dbe4ed;--accent:#386b89;
+  --season-header:#253b51;--season-header-glow:#a1c8df45;
+  --season-soft:#e8f0f8;--season-strong:#27536c;
+  --season-art1:#d9eaf3;--season-art2:#a9c6d9;
+}
+header {
+  background:radial-gradient(circle at 91% 13%,var(--season-header-glow),transparent 35%),var(--season-header);
+  transition:background-color .25s ease;
+}
+.tabs{background:var(--paper);border-bottom-color:var(--line);}
+.tabs button.active{background:var(--season-soft);color:var(--season-strong);}
+.tabs button:not(.active){color:var(--muted);}
+.card-art{background:linear-gradient(135deg,var(--season-art1),var(--season-art2));}
+.scale-panel,.source,.personal-panel,.recipe-variant-panel,.wegmans-panel,
+.wg-panel,.pantry-card,.calculator-panel,.timer-panel{
+  background:var(--season-soft);
+  border-color:var(--line);
+}
+.recipe-card,.shop-item,.shop-list li,.pantry-list li,.calc-metric{background:var(--paper);border-color:var(--line);}
+button.scale-chip.selected,.recipe-variant-tabs button.chosen,
+.start-cooking,.cook-footer .next,.timer-panel .primary,
+#shop-form button,.pantry-form button,.wg-panel button{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+.shop-group,.eyebrow,.scale-value{color:var(--accent);}
+.wg-product-link,.wg-visit-link{color:var(--accent)!important;}
+input[type="checkbox"],input[type="range"]{accent-color:var(--accent);}
+.theme-picker{
+  display:flex;align-items:center;gap:9px;margin-left:auto;
+  padding:2px 0 2px 12px;color:var(--muted);font-size:.87rem;
+}
+.theme-picker label{font-weight:650;white-space:nowrap;}
+.theme-picker select{
+  min-width:165px;padding:9px 34px 9px 12px;border:1px solid var(--line);
+  color:var(--ink);background:var(--paper);border-radius:8px;cursor:pointer;
+}
+.theme-picker .season-dot{
+  width:9px;height:9px;border-radius:50%;background:var(--accent);
+  flex-shrink:0;
+}
+.theme-picker select:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media(max-width:700px) {
+  .theme-picker{width:100%;padding:0;margin-left:0;justify-content:flex-start;}
+  .theme-picker select{min-width:0;flex:1;max-width:245px;}
+}
+@media print{.theme-picker{display:none!important;}}
