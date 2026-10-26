@@ -8,64 +8,64 @@
   const STORAGE="smith-recipe-book-holiday-decor-v1";
   const designs={
     newyear:{
-      label:"New Year's",icons:["🎉","🥂","🎆"],
-      garland:["✨","🎊","⭐","🎆","🎉","✨","🎊","⭐","🎆","✨","🎉","⭐"],
-      floaters:["✨","⭐","🎆","✦","🎊","✨","✧"],glow:"#c7a4555c",trim:"#b4925545"
+      label:"New Year's",icons:["🎉","🥳","🎆"],
+      garland:["🎉","🎆","🎊","🥂","🎉","🎇","🎊","🥳","🎆","🎉","🥂","🎇"],
+      floaters:["🎊","🎆","🥳","🎉","🎇","🎊","🎉"],glow:"#c7a4555c",trim:"#b4925545"
     },
     valentine:{
       label:"Valentine's Day",icons:["💌","💝","🌹"],
-      garland:["💗","💕","🌹","💗","💌","💞","💗","🌹","💕","💌","💗","💕"],
-      floaters:["💕","💗","✨","💞","✦","💝","💗"],glow:"#e47eaa66",trim:"#e38dac4b"
+      garland:["💗","💕","🌹","💌","💝","💞","💗","🌹","💌","💖","💗","💕"],
+      floaters:["💕","💗","🌹","💞","💝","💌","💗"],glow:"#e47eaa66",trim:"#e38dac4b"
     },
     presidents:{
-      label:"Presidents' Day",icons:["🇺🇸","🏛️","⭐"],
-      garland:["⭐","🇺🇸","🎩","⭐","🏛️","🇺🇸","⭐","🎩","🇺🇸","⭐","🏛️"],
-      floaters:["⭐","✦","✨","⭐","✧","⭐","✦"],glow:"#b8a4a25b",trim:"#9d72734a"
+      label:"Presidents' Day",icons:["🇺🇸","🦅","🏛️"],
+      garland:["🇺🇸","🦅","🏛️","🇺🇸","⭐","🦅","🏛️","🇺🇸","🦅","⭐","🇺🇸","🏛️"],
+      floaters:["🇺🇸","🦅","🏛️","⭐","🇺🇸","🦅","🇺🇸"],glow:"#b8a4a25b",trim:"#9d72734a"
     },
     stpatricks:{
-      label:"St. Patrick's Day",icons:["☘️","🌈","🍀"],
-      garland:["🍀","☘️","🌈","🍀","✨","☘️","🍀","🌈","✨","☘️","🍀"],
-      floaters:["🍀","✨","☘️","✧","🍀","⭐","☘️"],glow:"#69aa6559",trim:"#67a15d49"
+      label:"St. Patrick's Day",icons:["🍀","🌈","☘️"],
+      garland:["🍀","☘️","🌈","🍀","💚","☘️","🍀","🌈","💚","☘️","🍀","🍀"],
+      floaters:["🍀","☘️","🌈","💚","🍀","☘️","🍀"],glow:"#69aa6559",trim:"#67a15d49"
     },
     easter:{
       label:"Easter",icons:["🐰","🥚","🐣"],
-      garland:["🌷","🥚","🌼","🐣","🌷","🥚","🐰","🌼","🥚","🌷","🐣"],
-      floaters:["🌸","🌷","✨","🥚","🌼","🌸","✨"],glow:"#c6a6ef62",trim:"#b5a6df4b"
+      garland:["🐣","🌷","🥚","🐰","🌼","🥚","🐣","🌷","🥚","🐰","🌼","🐣"],
+      floaters:["🐣","🌷","🥚","🐰","🌼","🐣","🥚"],glow:"#c6a6ef62",trim:"#b5a6df4b"
     },
     earthday:{
       label:"Earth Day",icons:["🌎","🌱","🌿"],
-      garland:["🌍","🌱","🌿","🌼","🌎","🌱","🍃","🌿","🌎","🌱","🌼"],
-      floaters:["🌿","🍃","✨","🌱","🌿","🍃","✨"],glow:"#68ab9b53",trim:"#71b39342"
+      garland:["🌎","🌱","🌿","🌳","🍃","🌎","🌱","🌳","🌿","🌎","🍃","🌱"],
+      floaters:["🌿","🌎","🌱","🍃","🌳","🌱","🌿"],glow:"#68ab9b53",trim:"#71b39342"
     },
     mothersday:{
       label:"Mother's Day",icons:["💐","🌷","💗"],
-      garland:["🌸","💐","💗","🌷","🌼","🌸","💕","💐","🌷","🌼","💗"],
-      floaters:["🌸","💞","🌼","🌷","✨","🌸","💕"],glow:"#d79ac563",trim:"#d59cbb4b"
+      garland:["🌸","💐","💗","🌷","🌼","💐","💕","🌷","💐","🌼","💗","🌸"],
+      floaters:["🌸","💐","🌼","🌷","💗","🌸","💕"],glow:"#d79ac563",trim:"#d59cbb4b"
     },
     memorial:{
-      label:"Memorial Day",icons:["🇺🇸","🕊️","⭐"],
-      garland:["🇺🇸","⭐","🕊️","🇺🇸","⭐","🌹","🇺🇸","⭐","🕊️","🇺🇸","⭐"],
-      floaters:["⭐","✦","✨","🕊️","⭐","✧","⭐"],glow:"#8baac559",trim:"#6f8aaf49"
+      label:"Memorial Day",icons:["🇺🇸","🎖️","🕊️"],
+      garland:["🇺🇸","🎖️","🕊️","🌹","🇺🇸","⭐","🎖️","🌹","🇺🇸","🕊️","🎖️","🇺🇸"],
+      floaters:["🇺🇸","🎖️","🕊️","🌹","⭐","🇺🇸","🎖️"],glow:"#8baac559",trim:"#6f8aaf49"
     },
     flagday:{
-      label:"Flag Day",icons:["🇺🇸","⭐","🦅"],
-      garland:["🇺🇸","⭐","🇺🇸","✨","⭐","🇺🇸","⭐","✨","🇺🇸","⭐","🇺🇸"],
-      floaters:["⭐","✦","✨","⭐","✦","✨","⭐"],glow:"#81a2c759",trim:"#6088b445"
+      label:"Flag Day",icons:["🇺🇸","🦅","🇺🇸"],
+      garland:["🇺🇸","🦅","🇺🇸","⭐","🇺🇸","🦅","🇺🇸","🇺🇸","⭐","🇺🇸","🦅","🇺🇸"],
+      floaters:["🇺🇸","🦅","🇺🇸","⭐","🇺🇸","🦅","🇺🇸"],glow:"#81a2c759",trim:"#6088b445"
     },
     fathersday:{
-      label:"Father's Day",icons:["💙","🛠️","🎉"],
-      garland:["💙","⭐","🎉","💙","🔧","⭐","💙","🎉","⭐","💙","✨"],
-      floaters:["⭐","✨","💙","✦","⭐","✨","💙"],glow:"#8caeda55",trim:"#87a6d34a"
+      label:"Father's Day",icons:["💙","🛠️","🎁"],
+      garland:["💙","🧰","🛠️","🎁","💙","🔧","💙","🎁","🧰","💙","🛠️","🎁"],
+      floaters:["💙","🔧","🎁","🧰","💙","🛠️","💙"],glow:"#8caeda55",trim:"#87a6d34a"
     },
     independence:{
       label:"Fourth of July",icons:["🇺🇸","🎆","🗽"],
-      garland:["🇺🇸","⭐","🎆","🇺🇸","🎇","⭐","🗽","🇺🇸","🎆","⭐","🇺🇸"],
-      floaters:["⭐","✨","🎆","✦","🎇","⭐","✨"],glow:"#8d9dd067",trim:"#ae7a8b55"
+      garland:["🇺🇸","🎆","🎇","🗽","🇺🇸","🎆","🎇","🇺🇸","🗽","🎆","🇺🇸","🎇"],
+      floaters:["🎆","🇺🇸","🎇","🗽","🎆","🇺🇸","🎇"],glow:"#8d9dd067",trim:"#ae7a8b55"
     },
     labor:{
-      label:"Labor Day",icons:["🧰","🇺🇸","⭐"],
-      garland:["⭐","🛠️","🇺🇸","⚙️","⭐","🧰","🇺🇸","⭐","🛠️","⚙️","⭐"],
-      floaters:["⭐","⚙️","✨","✦","⭐","✨","⚙️"],glow:"#be9b6a59",trim:"#b68a6746"
+      label:"Labor Day",icons:["🧰","🛠️","🇺🇸"],
+      garland:["🧰","🛠️","⚙️","🇺🇸","🔧","🧰","🛠️","⚙️","🇺🇸","🔧","🧰","🛠️"],
+      floaters:["🧰","🔧","⚙️","🛠️","🇺🇸","🧰","🔧"],glow:"#be9b6a59",trim:"#b68a6746"
     },
     halloween:{
       label:"Halloween",icons:["🎃","👻","🐈‍⬛"],
@@ -73,9 +73,9 @@
       floaters:["🦇","✦","✨","🕸️","✦","🦇","✨"],glow:"#d5782f58",trim:"#7f411f50"
     },
     veterans:{
-      label:"Veterans Day",icons:["🇺🇸","🎖️","⭐"],
-      garland:["🇺🇸","⭐","🎖️","🇺🇸","⭐","🕊️","🇺🇸","⭐","🎖️","🇺🇸","⭐"],
-      floaters:["⭐","✦","✨","⭐","🕊️","✨","✦"],glow:"#a2a9b95b",trim:"#8e9eac48"
+      label:"Veterans Day",icons:["🇺🇸","🎖️","🦅"],
+      garland:["🇺🇸","🎖️","🦅","🇺🇸","⭐","🎖️","🇺🇸","🦅","🎖️","🇺🇸","⭐","🎖️"],
+      floaters:["🇺🇸","🎖️","🦅","⭐","🇺🇸","🎖️","🇺🇸"],glow:"#a2a9b95b",trim:"#8e9eac48"
     },
     thanksgiving:{
       label:"Thanksgiving",icons:["🍁","🦃","🍂"],
@@ -158,7 +158,14 @@
   function make(parent,tag,cls,content){
     const node=document.createElement(tag);
     if(cls)node.className=cls;
-    if(content!==undefined)node.textContent=content;
+    if(content==="🇺🇸"){
+      // Some Windows systems display the flag emoji as the letters "US".
+      // Use a lightweight, local vector flag so the header always shows a flag.
+      node.className=(cls?cls+" ":"")+"holiday-us-flag";
+      node.setAttribute("role","img");
+      node.setAttribute("aria-label","US flag");
+      node.title="US flag";
+    }else if(content!==undefined)node.textContent=content;
     parent.appendChild(node);
     return node;
   }
