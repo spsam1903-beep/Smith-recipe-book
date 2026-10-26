@@ -156,15 +156,16 @@
   }
   let selectedMode=savedMode(),current=null;
   function make(parent,tag,cls,content){
-    const node=document.createElement(tag);
-    if(cls)node.className=cls;
-    if(content==="🇺🇸"){
-      // Some Windows systems display the flag emoji as the letters "US".
-      // Use a lightweight, local vector flag so the header always shows a flag.
-      node.className=(cls?cls+" ":"")+"holiday-us-flag";
-      node.setAttribute("role","img");
-      node.setAttribute("aria-label","US flag");
+    // Windows may show flag emoji as "US" instead of the flag. A real image
+    // works reliably and stays completely local to this free GitHub Pages site.
+    const isUSFlag=content==="🇺🇸";
+    const node=document.createElement(isUSFlag?"img":tag);
+    node.className=(cls||"")+(isUSFlag?" holiday-us-flag":"");
+    if(isUSFlag){
+      node.src="./us-flag.svg";
+      node.alt="US flag";
       node.title="US flag";
+      node.decoding="async";
     }else if(content!==undefined)node.textContent=content;
     parent.appendChild(node);
     return node;
