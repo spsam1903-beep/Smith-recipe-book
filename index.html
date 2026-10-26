@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#332b26">
 <title>Smith Recipe Book</title><meta name="description" content="A personal collection of favorite recipes and restaurant-inspired copycats.">
 <style>
 :root{--ink:#30251c;--muted:#766759;--cream:#faf6ef;--paper:#fffdfa;--line:#e8ded1;--accent:#8b4934}
@@ -20,11 +20,23 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
-</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"></head>
+</style><link rel="stylesheet" href="./shopping.css"><link rel="stylesheet" href="./extras.css"><link rel="stylesheet" href="./calculators.css"><link rel="stylesheet" href="./wegmans-live.css"><link rel="stylesheet" href="./seasonal-theme.css"><script src="./seasonal-theme.js"></script></head>
 <body><header><h1>Smith Recipe Book</h1><p>Favorite dishes, recreated and remembered.</p></header><nav class="tabs" aria-label="Website navigation">
 <button id="recipes-tab" type="button" class="active" aria-selected="true">Recipes</button>
 <button id="shopping-tab" type="button" aria-selected="false">🛒 Shopping List <span id="shop-badge"></span></button>
 <button id="pantry-tab" type="button" aria-selected="false">🥫 My Pantry</button>
+<div class="theme-picker">
+<span class="season-dot" aria-hidden="true"></span>
+<label for="season-theme-select">Theme</label>
+<select id="season-theme-select" aria-label="Seasonal color theme">
+<option value="auto">Automatic (seasonal)</option>
+<option value="spring">🌷 Spring</option>
+<option value="summer">☀️ Summer</option>
+<option value="fall">🍂 Fall</option>
+<option value="winter">❄️ Winter</option>
+</select>
+<span id="season-theme-note" hidden></span>
+</div>
 </nav><main><section id="recipes-view"><div class="intro"><div><h2>Recipes worth keeping</h2><p>Favorite dishes in one place. Add more anytime.</p></div><span id="count"></span></div>
 <div class="controls"><input id="search" placeholder="Search dishes or ingredients…" aria-label="Search recipes"><select id="category" aria-label="Filter by category"><option value="">All categories</option></select></div>
 <section class="grid" id="cards" aria-label="Recipe library"></section><p id="empty" hidden>No matching recipes found.</p></section>
