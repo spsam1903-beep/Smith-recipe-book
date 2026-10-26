@@ -12,11 +12,6 @@
       garland:["✨","🎊","⭐","🎆","🎉","✨","🎊","⭐","🎆","✨","🎉","⭐"],
       floaters:["✨","⭐","🎆","✦","🎊","✨","✧"],glow:"#c7a4555c",trim:"#b4925545"
     },
-    mlk:{
-      label:"Martin Luther King Jr. Day",icons:["🕊️","🤝","💛"],
-      garland:["🕊️","✨","🤝","⭐","💛","🕊️","✨","🤝","⭐","💛","🕊️"],
-      floaters:["✦","🕊️","✨","⭐","✧","✨","✦"],glow:"#c7aa8c59",trim:"#a9806743"
-    },
     valentine:{
       label:"Valentine's Day",icons:["💌","💝","🌹"],
       garland:["💗","💕","🌹","💗","💌","💞","💗","🌹","💕","💌","💗","💕"],
@@ -57,11 +52,6 @@
       garland:["🇺🇸","⭐","🇺🇸","✨","⭐","🇺🇸","⭐","✨","🇺🇸","⭐","🇺🇸"],
       floaters:["⭐","✦","✨","⭐","✦","✨","⭐"],glow:"#81a2c759",trim:"#6088b445"
     },
-    juneteenth:{
-      label:"Juneteenth",icons:["⭐","🎉","🕊️"],
-      garland:["⭐","🎉","✨","🕊️","⭐","🎊","⭐","✨","🎉","⭐","🕊️"],
-      floaters:["⭐","✦","✨","🎊","⭐","✨","✧"],glow:"#c57d6f63",trim:"#b8797252"
-    },
     fathersday:{
       label:"Father's Day",icons:["💙","🛠️","🎉"],
       garland:["💙","⭐","🎉","💙","🔧","⭐","💙","🎉","⭐","💙","✨"],
@@ -76,11 +66,6 @@
       label:"Labor Day",icons:["🧰","🇺🇸","⭐"],
       garland:["⭐","🛠️","🇺🇸","⚙️","⭐","🧰","🇺🇸","⭐","🛠️","⚙️","⭐"],
       floaters:["⭐","⚙️","✨","✦","⭐","✨","⚙️"],glow:"#be9b6a59",trim:"#b68a6746"
-    },
-    octoberday:{
-      label:"Indigenous Peoples' / Columbus Day",icons:["🌎","🍁","🌿"],
-      garland:["🍁","🌎","🍂","🌿","🍁","🌎","🍂","🍁","🌿","🍂","🍁"],
-      floaters:["🍁","🍂","✨","🌿","🍁","🍂","✨"],glow:"#ae914f59",trim:"#aa7e454a"
     },
     halloween:{
       label:"Halloween",icons:["🎃","👻","🐈‍⬛"],
@@ -141,7 +126,6 @@
     const year=date.getFullYear(),month=date.getMonth()+1,day=date.getDate();
     // Keep Christmas through December 30; New Year's displays Dec 31-Jan 5.
     if((month===12&&day===31)||(month===1&&day<=5))return "newyear";
-    if(month===1&&near(date,year,1,nthWeekday(year,1,1,3),2,1))return "mlk";
     if(month===2&&day>=8&&day<=14)return "valentine";
     if(month===2&&near(date,year,2,nthWeekday(year,2,1,3),2,1))return "presidents";
     if(month===3&&day>=11&&day<=17)return "stpatricks";
@@ -153,10 +137,8 @@
     if(month===5&&near(date,year,5,lastWeekday(year,5,1),5,1))return "memorial";
     if(month===6&&day>=12&&day<=15)return "flagday";
     if(month===6&&near(date,year,6,nthWeekday(year,6,0,3),2,1)&&day!==19)return "fathersday";
-    if(month===6&&day>=17&&day<=20)return "juneteenth";
     if((month===6&&day>=30)||(month===7&&day<=7))return "independence";
     if(month===9&&near(date,year,9,nthWeekday(year,9,1,1),4,1))return "labor";
-    if(month===10&&near(date,year,10,nthWeekday(year,10,1,2),1,1))return "octoberday";
     if(month===10)return "halloween";
     if(month===11&&day>=9&&day<=12)return "veterans";
     if(month===11)return "thanksgiving";
