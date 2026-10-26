@@ -144,16 +144,31 @@ html[data-holiday="christmas"] .holiday-figures {bottom:31px;}
   .site-holiday,.holiday-picker{display:none!important;}
 }
 
-/* Actual local SVG image instead of the Windows fallback "US" glyph. */
+/* Emoji-style US flag SVG (Twemoji) renders as an actual image, not "US" text. */
 .site-holiday img.holiday-us-flag {
   display:inline-block!important;
-  flex-shrink:0;
-  width:1.46em;
-  height:.78em;
+  width:1.12em;
+  height:1.12em;
+  min-width:1.12em;
   object-fit:contain;
-  vertical-align:-.09em;
-  border-radius:1px;
+  flex-shrink:0;
+  vertical-align:middle;
   filter:drop-shadow(0 2px 3px #15151552);
 }
-.site-holiday .holiday-figure.holiday-us-flag{align-self:center;}
-.site-holiday .holiday-trim img.holiday-us-flag{filter:none;}
+.site-holiday .holiday-figure.holiday-us-flag {align-self:center;}
+.site-holiday .holiday-trim img.holiday-us-flag {
+  width:1.2em;
+  height:1.2em;
+  min-width:1.2em;
+  filter:none;
+}
+.holiday-picker .holiday-menu-flag {
+  width:24px;
+  height:24px;
+  object-fit:contain;
+  flex-shrink:0;
+  display:none;
+}
+html:is([data-holiday="presidents"],[data-holiday="memorial"],[data-holiday="flagday"],
+[data-holiday="independence"],[data-holiday="labor"],[data-holiday="veterans"])
+.holiday-picker .holiday-menu-flag {display:inline-block;}
