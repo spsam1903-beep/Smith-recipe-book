@@ -170,9 +170,10 @@ button.surprise-button:focus-visible,.surprise-reroll:focus-visible{outline:3px 
 <p class="timer-hint">Timer works while this page stays open. It can alert you when finished. Cooking times don't automatically scale with servings.</p></div>
 </div></dialog>
 <script src="./protein-variants.js"></script>
+<script src="./family-recipes.js"></script>
 <script>
-const recipes=[{"id":"mcguires-potato-skins","title":"McGuire’s-Style Irish Potato Skins","category":"Appetizers","time":"75 min","servings":4,"source":"Unofficial copycat inspired by McGuire’s Irish Pub, Destin, FL.","sourceUrl":"https://www.mcguiresirishpub.com/items/irish-potato-skins","description":"Crispy russet potato shells loaded with smoky Gouda and applewood-smoked bacon.","ingredients":["4 medium russet potatoes","6–8 slices applewood-smoked bacon","6 oz smoked Gouda, freshly shredded","2 tbsp melted butter or reserved bacon fat","1 tbsp neutral oil","½ tsp kosher salt","¼ tsp black pepper","Sour cream, optional"],"steps":["Heat oven to 425°F. Scrub and dry potatoes, prick with a fork, then rub with oil and salt. Bake on the rack 45–60 minutes until tender.","Cool until safe to handle, halve lengthwise, and scoop out centers, leaving about ¼ inch potato inside each shell.","Brush both sides with melted butter or bacon fat. Bake skin-side up at 450°F for 8–10 minutes, flip, then bake 5–7 minutes more until crisp.","Cook bacon until crisp and crumble. Fill skins with smoked Gouda, then top with bacon.","Bake at 425°F for 5–8 minutes, until cheese melts. Optional: broil briefly while watching closely. Serve warm."],"tips":"Air fryer: crisp empty shells at 400°F for 6–8 minutes; add fillings and heat at 350°F for 3–5 minutes."},{"id":"rustic-wheelhouse-bolognese","title":"Rustic Wheelhouse–Style Rigatoni Bolognese","category":"Pasta","time":"2 hr 20 min","servings":4,"source":"Unofficial copycat inspired by the Rigatoni Bolognese at Rustic Wheelhouse, Chester, NY. The exact restaurant recipe is unverified; this version reflects the diner's description of a thick, creamy orange meat sauce.","sourceUrl":"","description":"Rigatoni coated in a thick, creamy orange beef-and-pork Bolognese.","ingredients":["1 lb rigatoni","¾ lb ground beef (80/20)","¼ lb ground pork","2 tbsp olive oil","1 small yellow onion, finely diced","1 carrot, finely diced","1 celery stalk, finely diced","3 garlic cloves, minced","2 tbsp tomato paste","½ cup dry white wine (or broth)","14–15 oz crushed tomatoes","¾ cup whole milk","⅓ cup heavy cream (add more for a lighter orange sauce)","Beef stock or water, only as needed","1 bay leaf","Salt and black pepper","Finely grated Parmesan, to finish"],"steps":["Heat oil over medium-low heat. Cook finely diced onion, carrot, and celery for 8–10 minutes until soft. Stir in garlic for 30 seconds.","Add beef and pork and cook until browned, breaking the meat into very small pieces. Stir in tomato paste and cook about 2 minutes.","Deglaze with white wine and simmer until mostly evaporated. Add tomatoes, milk, and bay leaf. Bring to a gentle simmer.","Simmer uncovered or partially covered over low heat for 90–120 minutes, stirring regularly, until very thick. Add only a splash of stock if it starts sticking. A spoon dragged through should leave a brief trail.","Stir in the measured heavy cream during the final 10 minutes, adding a little more if needed for the orange color and creamy finish. Season and remove bay leaf.","Boil rigatoni in salted water until 1–2 minutes shy of al dente. Reserve pasta water and drain.","Toss rigatoni directly with the sauce for 1–2 minutes. Add pasta water only 1–2 tablespoons at a time if necessary, then stir in Parmesan. The sauce should grip the pasta without pooling."],"tips":"Make the sauce a day ahead for deeper flavor. Refrigerate promptly and reheat thoroughly. Freezes well before adding cream."}];
-const icons={"Appetizers":"🥔","Pasta":"🍝","Budget Meals":"🥟"};
+const recipes=[{"id":"mcguires-potato-skins","title":"McGuire’s-Style Irish Potato Skins","category":"Appetizers","time":"75 min","servings":4,"source":"Unofficial copycat inspired by McGuire’s Irish Pub, Destin, FL.","sourceUrl":"https://www.mcguiresirishpub.com/items/irish-potato-skins","description":"Crispy russet potato shells loaded with smoky Gouda and applewood-smoked bacon.","ingredients":["4 medium russet potatoes","6–8 slices applewood-smoked bacon","6 oz smoked Gouda, freshly shredded","2 tbsp melted butter or reserved bacon fat","1 tbsp neutral oil","½ tsp kosher salt","¼ tsp black pepper","Sour cream, optional"],"steps":["Heat oven to 425°F. Scrub and dry potatoes, prick with a fork, then rub with oil and salt. Bake on the rack 45–60 minutes until tender.","Cool until safe to handle, halve lengthwise, and scoop out centers, leaving about ¼ inch potato inside each shell.","Brush both sides with melted butter or bacon fat. Bake skin-side up at 450°F for 8–10 minutes, flip, then bake 5–7 minutes more until crisp.","Cook bacon until crisp and crumble. Fill skins with smoked Gouda, then top with bacon.","Bake at 425°F for 5–8 minutes, until cheese melts. Optional: broil briefly while watching closely. Serve warm."],"tips":"Air fryer: crisp empty shells at 400°F for 6–8 minutes; add fillings and heat at 350°F for 3–5 minutes."},{"id":"rustic-wheelhouse-bolognese","title":"Rustic Wheelhouse–Style Rigatoni Bolognese","category":"Pasta","time":"2 hr 20 min","servings":4,"source":"Unofficial copycat inspired by the Rigatoni Bolognese at Rustic Wheelhouse, Chester, NY. The exact restaurant recipe is unverified; this version reflects the diner's description of a thick, creamy orange meat sauce.","sourceUrl":"","description":"Rigatoni coated in a thick, creamy orange beef-and-pork Bolognese.","ingredients":["1 lb rigatoni","¾ lb ground beef (80/20)","¼ lb ground pork","2 tbsp olive oil","1 small yellow onion, finely diced","1 carrot, finely diced","1 celery stalk, finely diced","3 garlic cloves, minced","2 tbsp tomato paste","½ cup dry white wine (or broth)","14–15 oz crushed tomatoes","¾ cup whole milk","⅓ cup heavy cream (add more for a lighter orange sauce)","Beef stock or water, only as needed","1 bay leaf","Salt and black pepper","Finely grated Parmesan, to finish"],"steps":["Heat oil over medium-low heat. Cook finely diced onion, carrot, and celery for 8–10 minutes until soft. Stir in garlic for 30 seconds.","Add beef and pork and cook until browned, breaking the meat into very small pieces. Stir in tomato paste and cook about 2 minutes.","Deglaze with white wine and simmer until mostly evaporated. Add tomatoes, milk, and bay leaf. Bring to a gentle simmer.","Simmer uncovered or partially covered over low heat for 90–120 minutes, stirring regularly, until very thick. Add only a splash of stock if it starts sticking. A spoon dragged through should leave a brief trail.","Stir in the measured heavy cream during the final 10 minutes, adding a little more if needed for the orange color and creamy finish. Season and remove bay leaf.","Boil rigatoni in salted water until 1–2 minutes shy of al dente. Reserve pasta water and drain.","Toss rigatoni directly with the sauce for 1–2 minutes. Add pasta water only 1–2 tablespoons at a time if necessary, then stir in Parmesan. The sauce should grip the pasta without pooling."],"tips":"Make the sauce a day ahead for deeper flavor. Refrigerate promptly and reheat thoroughly. Freezes well before adding cream."} ,...(window.FAMILY_RECIPES||[])];
+const icons={"Appetizers":"🥔","Pasta":"🍝","Budget Meals":"🥟","Breads & Baking":"🍞","Cookies & Desserts":"🍪","Main Dishes":"🍽️","Salads & Sides":"🥗","Soups & Comfort Food":"🥣"};
 const cards=document.getElementById("cards"),search=document.getElementById("search"),category=document.getElementById("category"),modal=document.getElementById("modal"),detail=document.getElementById("detail"),surpriseButton=document.getElementById("surprise-me");
 let previousSurpriseId=null;
 
@@ -200,6 +201,12 @@ function scaleIngredient(ingredient,multiplier){
 function el(tag,cls,txt){const node=document.createElement(tag);if(cls)node.className=cls;if(txt!==undefined)node.textContent=txt;return node}
 function add(parent,tag,cls,txt){const x=el(tag,cls,txt);parent.appendChild(x);return x}
 for(const c of [...new Set(recipes.map(r=>r.category))].sort()){let opt=add(category,"option","",c);opt.value=c}
+function recipeYield(r,factor=1){
+  if(r.yieldUnknown)return factor===1?"Yield not specified":factor+"× batch · yield unspecified";
+  const count=r.servings*factor;
+  const unit=r.yieldUnit||(count===1?"serving":"servings");
+  return count+" "+unit;
+}
 function matchingRecipes(){
   const term=search.value.toLowerCase().trim(),cat=category.value;
   return recipes.filter(r=>(!cat||r.category===cat)&&(!term||[r.title,r.description,r.category,...r.ingredients].join(" ").toLowerCase().includes(term)));
@@ -207,7 +214,8 @@ function matchingRecipes(){
 function draw(){const filtered=matchingRecipes();cards.replaceChildren();document.getElementById("count").textContent=filtered.length+" recipes";document.getElementById("empty").hidden=filtered.length>0;
 surpriseButton.disabled=filtered.length===0;
 surpriseButton.title=filtered.length?"Choose a random recipe from these "+filtered.length+" results":"No matching recipes to surprise you with";
-filtered.forEach(r=>{let b=add(cards,"button","recipe-card");b.type="button";add(b,"div","card-art",icons[r.category]||"🍲");let c=add(b,"div","card-content");add(c,"div","eyebrow",r.category);add(c,"h3","",r.title);add(c,"p","",r.description);add(c,"div","meta",r.time+" · "+r.servings+" servings");if(window.PROTEIN_VARIANTS?.[r.id])add(c,"span","protein-tag","Higher-protein option available");if(window.recipeCardBadge)window.recipeCardBadge(r,c);b.onclick=()=>openRecipe(r)})}
+filtered.forEach(r=>{let b=add(cards,"button","recipe-card");b.type="button";add(b,"div","card-art",icons[r.category]||"🍲");let c=add(b,"div","card-content");add(c,"div","eyebrow",r.category);add(c,"h3","",r.title);add(c,"p","",r.description);add(c,"div","meta",r.time+" · "+recipeYield(r));if(r.variants?.length)add(c,"span","protein-tag",(r.variants.length+1)+" recipe versions");
+else if(window.PROTEIN_VARIANTS?.[r.id])add(c,"span","protein-tag","Higher-protein option available");if(window.recipeCardBadge)window.recipeCardBadge(r,c);b.onclick=()=>openRecipe(r)})}
 function surpriseMe(){
   const matches=matchingRecipes();
   if(!matches.length)return;
@@ -220,13 +228,24 @@ function surpriseMe(){
 function openRecipe(r,options={}){
   detail.replaceChildren();
   const high=window.PROTEIN_VARIANTS?.[r.id]||null;
+  const optionsList=[
+    {key:"classic",label:"Classic",data:null},
+    ...(high?[{key:"protein",label:"💪 Higher Protein",data:high}]:[]),
+    ...(Array.isArray(r.variants)?r.variants.map(v=>({key:v.key,label:v.label,data:v})):[])
+  ];
   let mode="classic";
   let ingredientSpans=[];
   let versionBtns=[];
   let calcController=null;
-  const chosen=()=>mode==="protein"&&high
-    ? {...r,...high,id:r.id+"--higher-protein",title:r.title+" (Higher Protein)"}
-    : r;
+  const selected=()=>optionsList.find(v=>v.key===mode)||optionsList[0];
+  const chosen=()=>{
+    const choice=selected();
+    if(choice.key==="classic")return r;
+    const version=choice.data;
+    return {...r,...version,
+      id:r.id+(choice.key==="protein"?"--higher-protein":"--"+choice.key),
+      title:r.title+" ("+choice.label.replace(/^[^A-Za-z]*\s*/,"")+")"};
+  };
   if(options.surprise)add(detail,"p","surprise-intro","🎲 A surprise from the Smith Recipe Book — could this be your next family favorite?");
   const top=add(detail,"div","dialog-top"),heading=add(top,"div");
   add(heading,"div","eyebrow",r.category);
@@ -241,27 +260,29 @@ function openRecipe(r,options={}){
   }
   const close=add(actions,"button","action","✕ Close");close.type="button";close.onclick=()=>modal.close();
   const summary=add(detail,"p","summary",r.description);
-  const portionMeta=add(detail,"p","meta",r.time+" · "+r.servings+" servings");
+  const portionMeta=add(detail,"p","meta",r.time+" · "+recipeYield(r));
   let versionDescription=null,versionChanges=null;
-  if(high){
+  if(optionsList.length>1){
     const versionPanel=add(detail,"section","recipe-variant-panel");
     const versionTitle=add(versionPanel,"div","recipe-variant-header");
     add(versionTitle,"strong","","Recipe version");
     const versionControls=add(versionPanel,"div","recipe-variant-tabs");
-    for(const [key,label] of [["classic","Classic"],["protein","💪 Higher Protein"]]){
-      const btn=add(versionControls,"button",key==="classic"?"chosen":"",label);
+    for(const option of optionsList){
+      const btn=add(versionControls,"button",option.key==="classic"?"chosen":"",option.label);
       btn.type="button";
-      btn.setAttribute("aria-pressed",String(key==="classic"));
-      btn.onclick=()=>{mode=key;renderVersion()};
-      versionBtns.push([key,btn]);
+      btn.setAttribute("aria-pressed",String(option.key==="classic"));
+      btn.onclick=()=>{mode=option.key;renderVersion()};
+      versionBtns.push([option.key,btn]);
     }
     versionDescription=add(versionPanel,"p","recipe-variant-copy","");
     versionChanges=add(versionPanel,"div","recipe-variant-changes","");
-    add(versionPanel,"p","recipe-variant-disclaimer","High-protein adaptations are homemade suggestions, not official restaurant recipes. Protein amounts depend on ingredients and brands.");
+    add(versionPanel,"p","recipe-variant-disclaimer",high
+      ?"High-protein adaptations are homemade suggestions, not official restaurant recipes. Protein amounts depend on ingredients and brands."
+      :"Classic, Garlic Butter, and Cheese versions are adapted from the same printed source. Choose the preparation before adding ingredients to your shopping list.");
   }
   const scalePanel=add(detail,"div","scale-panel"),scaleHeader=add(scalePanel,"div","scale-header");
   add(scaleHeader,"strong","","Adjust recipe size");
-  const scaleValue=add(scaleHeader,"span","scale-value","1× · "+r.servings+" servings");
+  const scaleValue=add(scaleHeader,"span","scale-value","1× · "+recipeYield(r));
   const slider=add(scalePanel,"input","scale-range");
   slider.type="range";slider.min="0.5";slider.max="4";slider.step="0.25";slider.value="1";
   slider.setAttribute("aria-label","Recipe quantity multiplier");
@@ -282,7 +303,7 @@ function openRecipe(r,options={}){
     const unchecked=[...ul.querySelectorAll("li")]
       .filter(li=>!li.querySelector("input").checked)
       .map(li=>li.querySelector("span").textContent);
-    const label=r.title+(mode==="protein"?" — Higher Protein":" — Classic");
+    const label=r.title+" — "+selected().label;
     if(window.addRecipeShopping&&window.addRecipeShopping(unchecked,label))modal.close();
   };
   add(right,"h3","","Directions");
@@ -297,23 +318,25 @@ function openRecipe(r,options={}){
   }
   function updateScale(){
     const recipe=chosen();
-    const factor=Number(slider.value),serves=recipe.servings*factor;
-    scaleValue.textContent=factor+"× · "+serves+" servings";
-    portionMeta.textContent=recipe.time+" · "+serves+" servings";
+    const factor=Number(slider.value);
+    scaleValue.textContent=factor+"× · "+recipeYield(recipe,factor);
+    portionMeta.textContent=recipe.time+" · "+recipeYield(recipe,factor);
     ingredientSpans.forEach((span,i)=>span.textContent=scaleIngredient(recipe.ingredients[i],factor));
     presetButtons.forEach(([amount,btn])=>btn.classList.toggle("selected",amount===factor));
     if(calcController)calcController.refresh();
   }
   function renderVersion(){
     const recipe=chosen();
-    summary.textContent=mode==="protein"&&high?high.description:r.description;
-    if(high){
+    const choice=selected();
+    summary.textContent=mode!=="classic"&&choice.data?.description?choice.data.description:r.description;
+    if(optionsList.length>1){
       versionBtns.forEach(([key,btn])=>{
         btn.classList.toggle("chosen",key===mode);
         btn.setAttribute("aria-pressed",String(key===mode));
       });
-      versionDescription.textContent=mode==="protein"?high.description:"The original cookbook recipe, unchanged.";
-      versionChanges.textContent=mode==="protein"?"Protein boosts: "+high.changes.join(" · "):"Switch versions to compare ingredients and cooking steps.";
+      versionDescription.textContent=mode==="classic"?"The original cookbook recipe, unchanged.":(choice.data.description||"");
+      versionChanges.textContent=mode==="classic"?"Switch versions to compare ingredients and cooking steps."
+       :(choice.data.changes||[]).join(" · ");
     }
     ul.replaceChildren();ingredientSpans=[];
     for(const ingredient of recipe.ingredients){
