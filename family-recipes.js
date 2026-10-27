@@ -7,6 +7,7 @@
 window.FAMILY_RECIPES = [
   {
     "id": "family-quick-zucchini-bread",
+    "familyRecipe": true,
     "title": "Quick Zucchini Bread",
     "category": "Breads & Baking",
     "time": "60 min baking",
@@ -40,6 +41,7 @@ window.FAMILY_RECIPES = [
   },
   {
     "id": "family-sugar-cookies-double",
+    "familyRecipe": true,
     "title": "Family Sugar Cookies (Double Batch)",
     "category": "Cookies & Desserts",
     "time": "about 10 min baking per batch",
@@ -68,6 +70,7 @@ window.FAMILY_RECIPES = [
   },
   {
     "id": "family-meatballs",
+    "familyRecipe": true,
     "title": "Family Meatballs",
     "category": "Main Dishes",
     "time": "45 min if baked",
@@ -96,6 +99,7 @@ window.FAMILY_RECIPES = [
   },
   {
     "id": "family-black-bean-corn-salad",
+    "familyRecipe": true,
     "title": "Black Bean and Corn Salad",
     "category": "Salads & Sides",
     "time": "Prep and chill (time unspecified)",
@@ -125,6 +129,7 @@ window.FAMILY_RECIPES = [
   },
   {
     "id": "family-bulgogi-korean-bbq-beef",
+    "familyRecipe": true,
     "title": "Bulgogi (Korean-Style BBQ Beef)",
     "category": "Main Dishes",
     "time": "Overnight marinating; cook time unspecified",
@@ -156,6 +161,7 @@ window.FAMILY_RECIPES = [
   },
   {
     "id": "family-tomato-soup",
+    "familyRecipe": true,
     "title": "Family Tomato Soup",
     "category": "Soups & Comfort Food",
     "time": "4 min final boil; total time unspecified",
@@ -201,6 +207,7 @@ window.FAMILY_RECIPES = [
       "1 ¾ cups bread flour (or all-purpose flour)",
       "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
       "2 tbsp (30 g) melted ghee or butter, for finishing",
+      "½ tsp oil, for lightly coating the skillet (optional if seasoned)",
       "Nigella seeds, optional",
       "Fresh cilantro, finely chopped, optional"
     ],
@@ -236,6 +243,7 @@ window.FAMILY_RECIPES = [
           "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
           "2 tbsp (30 g) salted butter or ghee, for garlic butter",
           "½ tsp crushed garlic, for garlic butter",
+        "½ tsp oil, for lightly coating the skillet (optional if seasoned)",
           "Nigella seeds, optional",
           "Fresh cilantro, finely chopped, optional"
         ],
@@ -268,7 +276,8 @@ window.FAMILY_RECIPES = [
           "1 ¾ cups bread flour (or all-purpose flour)",
           "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
           "2 tbsp (30 g) melted ghee or butter, for filling and finishing",
-          "1 ½ cups shredded melting cheese (about ¼ cup per naan; Monterey Jack, cheddar, Colby, etc.)"
+          "1 ½ cups shredded melting cheese (about ¼ cup per naan; Monterey Jack, cheddar, Colby, etc.)",
+        "½ tsp oil, for lightly coating the skillet (optional if seasoned)"
         ],
         "steps": [
           "Mix yeast with warm water and sugar. Cover for 10 minutes until foamy.",
