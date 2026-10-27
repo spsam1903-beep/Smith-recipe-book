@@ -17,7 +17,7 @@ window.FAMILY_RECIPES = [
     "description": "A two-loaf zucchini quick bread with cinnamon, vanilla, and optional nuts or raisins.",
     "ingredients": [
       "3 cups all-purpose flour",
-      "1¼ tsp salt",
+      "1 ¼ tsp salt",
       "1 tsp baking soda",
       "¼ tsp baking powder",
       "1 tsp cinnamon",
@@ -50,7 +50,7 @@ window.FAMILY_RECIPES = [
     "sourceUrl": "",
     "description": "Classic family sugar cookies from a handwritten double-batch ingredient list.",
     "ingredients": [
-      "1½ cups flour",
+      "1 ½ cups flour",
       "½ tsp baking powder",
       "½ tsp salt",
       "½ tsp baking soda",
@@ -106,7 +106,7 @@ window.FAMILY_RECIPES = [
     "ingredients": [
       "1 can (15 oz) black beans, rinsed and drained",
       "4 oz Monterey Jack cheese, cut into ¼-inch cubes",
-      "1 can (8¾ oz) whole-kernel corn, drained",
+      "1 can (8 ¾ oz) whole-kernel corn, drained",
       "¼ cup sliced green onions, including tops",
       "¾ cup thinly sliced celery",
       "1 small sweet red pepper, diced",
@@ -171,7 +171,7 @@ window.FAMILY_RECIPES = [
       "1 tsp crushed red pepper",
       "1 jar (24 oz) tomato sauce",
       "2 cups water",
-      "1½ cups heavy cream",
+      "1 ½ cups heavy cream",
       "Salt and pepper, to taste"
     ],
     "steps": [
@@ -196,9 +196,9 @@ window.FAMILY_RECIPES = [
       "½ cup warm water (about 105°F)",
       "1 tbsp white sugar",
       "2 tbsp whole milk (low-fat also works)",
-      "1½ tbsp whisked egg, at room temperature",
+      "1 ½ tbsp whisked egg, at room temperature",
       "½ tsp kosher or cooking salt",
-      "1¾ cups bread flour (or all-purpose flour)",
+      "1 ¾ cups bread flour (or all-purpose flour)",
       "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
       "2 tbsp (30 g) melted ghee or butter, for finishing",
       "Nigella seeds, optional",
@@ -208,14 +208,14 @@ window.FAMILY_RECIPES = [
       "Stir yeast, warm water, and sugar together in a small bowl; cover and let stand about 10 minutes until foamy.",
       "Whisk the milk and measured egg together. Sift the flour and salt into a separate bowl.",
       "Mix the yeast mixture, melted dough butter or ghee, and milk–egg mixture into the flour. Bring the mixture into a soft ball with your hands. Kneading is not required.",
-      "Cover and leave in a warm place for 1–1½ hours, until doubled in size.",
+      "Cover and leave in a warm place for 1–1 ½ hours, until doubled in size.",
       "Place on a lightly floured surface, cut into 6 pieces, and shape each into a smooth ball. Rest on a lightly floured tray under a tea towel for 15 minutes, until puffed.",
       "Roll each round to about 3–4 mm thick, approximately 6–7 inches across.",
       "Lightly oil a well-seasoned cast-iron skillet and heat over high heat until wisps of smoke appear.",
-      "Cook each naan about 1–1½ minutes until the underside is deeply golden and the top bubbles. Flip and cook for about 1 minute more; adjust heat as needed.",
+      "Cook each naan about 1–1 ½ minutes until the underside is deeply golden and the top bubbles. Flip and cook for about 1 minute more; adjust heat as needed.",
       "Brush with the melted finishing ghee or butter, add optional nigella seeds and cilantro, and serve hot."
     ],
-    "tips": "Original printed recipe: 6 naan, about 20 minutes prep, 10 minutes cooking and 2 hours rising. Bread flour is preferred; all-purpose also works. For 1 batch, whisk an egg and measure 1½ tbsp (about half an egg). Avoid nonstick cookware at the high cooking temperature. To make ahead, refrigerate the dough after its first rise (up to 24 hours according to the original), then allow at least a couple of hours to warm before shaping and finishing the second rise. The source lists 223 kcal per plain naan excluding finishing fat and cheese; nutrition estimates here are not prefilled.",
+    "tips": "Original printed recipe: 6 naan, about 20 minutes prep, 10 minutes cooking and 2 hours rising. Bread flour is preferred; all-purpose also works. For 1 batch, whisk an egg and measure 1 ½ tbsp (about half an egg). Avoid nonstick cookware at the high cooking temperature. To make ahead, refrigerate the dough after its first rise (up to 24 hours according to the original), then allow at least a couple of hours to warm before shaping and finishing the second rise. The source lists 223 kcal per plain naan excluding finishing fat and cheese; nutrition estimates here are not prefilled.",
     "variants": [
       {
         "key": "garlic-butter",
@@ -230,9 +230,9 @@ window.FAMILY_RECIPES = [
           "½ cup warm water (about 105°F)",
           "1 tbsp white sugar",
           "2 tbsp whole milk (low-fat also works)",
-          "1½ tbsp whisked egg, at room temperature",
+          "1 ½ tbsp whisked egg, at room temperature",
           "½ tsp kosher or cooking salt",
-          "1¾ cups bread flour (or all-purpose flour)",
+          "1 ¾ cups bread flour (or all-purpose flour)",
           "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
           "2 tbsp (30 g) salted butter or ghee, for garlic butter",
           "½ tsp crushed garlic, for garlic butter",
@@ -242,9 +242,9 @@ window.FAMILY_RECIPES = [
         "steps": [
           "Stir the yeast, warm water, and sugar together. Cover for about 10 minutes until foamy.",
           "Whisk the milk and egg, and sift flour with salt. Mix with the yeast mixture and melted dough butter or ghee, forming a soft ball without kneading.",
-          "Cover and rise in a warm place for 1–1½ hours until doubled.",
+          "Cover and rise in a warm place for 1–1 ½ hours until doubled.",
           "Divide into 6 smooth balls, cover on a floured tray, and proof for another 15 minutes.",
-          "Roll to about 3–4 mm thick. Lightly oil a well-seasoned cast-iron skillet, heat over high heat until lightly smoking, and cook about 1–1½ minutes on the first side and 1 minute after flipping.",
+          "Roll to about 3–4 mm thick. Lightly oil a well-seasoned cast-iron skillet, heat over high heat until lightly smoking, and cook about 1–1 ½ minutes on the first side and 1 minute after flipping.",
           "For the topping, melt 2 tbsp salted butter or ghee with ½ tsp crushed garlic in short microwave bursts. Let stand a couple of minutes to infuse.",
           "Brush the freshly cooked naan with the garlic butter. Add optional nigella seeds and chopped cilantro; serve hot."
         ],
@@ -263,20 +263,20 @@ window.FAMILY_RECIPES = [
           "½ cup warm water (about 105°F)",
           "1 tbsp white sugar",
           "2 tbsp whole milk (low-fat also works)",
-          "1½ tbsp whisked egg, at room temperature",
+          "1 ½ tbsp whisked egg, at room temperature",
           "½ tsp kosher or cooking salt",
-          "1¾ cups bread flour (or all-purpose flour)",
+          "1 ¾ cups bread flour (or all-purpose flour)",
           "2 tbsp (30 g) melted ghee or unsalted butter, for dough",
           "2 tbsp (30 g) melted ghee or butter, for filling and finishing",
-          "1½ cups shredded melting cheese (about ¼ cup per naan; Monterey Jack, cheddar, Colby, etc.)"
+          "1 ½ cups shredded melting cheese (about ¼ cup per naan; Monterey Jack, cheddar, Colby, etc.)"
         ],
         "steps": [
           "Mix yeast with warm water and sugar. Cover for 10 minutes until foamy.",
           "Whisk milk and egg; sift flour with salt. Combine with the yeast mixture and melted dough butter or ghee into a soft ball, without kneading.",
-          "Cover and rise for 1–1½ hours until doubled. Divide into 6 balls and let rise covered for another 15 minutes.",
+          "Cover and rise for 1–1 ½ hours until doubled. Divide into 6 balls and let rise covered for another 15 minutes.",
           "Roll a dough ball flat and brush lightly with plain melted butter or ghee. Pile about ¼ cup of shredded cheese in the center.",
           "Gather the edges into a pouch around the cheese, twisting to seal; flip seam-side down and roll carefully to about 6–7 mm (¼ inch) thick.",
-          "Heat a well-seasoned cast-iron skillet over high heat, but not to the point of smoking. Cook for about 1½ minutes on the first side until golden and puffed, then turn and cook around 45 seconds.",
+          "Heat a well-seasoned cast-iron skillet over high heat, but not to the point of smoking. Cook for about 1 ½ minutes on the first side until golden and puffed, then turn and cook around 45 seconds.",
           "Repeat with the other cheese naan and serve warm."
         ],
         "tips": "Based on the separately printed Cheese Naan instructions. Monterey Jack is a suggested cheese; any well-melting shredded cheese works. Do not overheat a nonstick pan."
