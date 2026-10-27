@@ -20,6 +20,11 @@ button.scale-chip{border:1px solid #d8c0aa;border-radius:999px;background:#fff;p
 button.scale-chip.selected{background:var(--accent);color:white;border-color:var(--accent)}
 .scale-hint{color:var(--muted);font-size:.8rem;margin-top:10px}
 @media print{.scale-panel input,.scale-panel .scale-presets,.scale-hint{display:none!important}}
+.family-recipe-tag{
+  display:inline-block;margin-top:9px;padding:4px 9px;border-radius:7px;
+  background:var(--season-soft,#f7efe4);border:1px solid var(--line);
+  color:var(--accent);font-size:.76rem;font-weight:650;
+}
 /* Surprise Me: cookbook discovery, with the current seasonal color palette. */
 button.surprise-button{
   flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
@@ -214,7 +219,7 @@ function matchingRecipes(){
 function draw(){const filtered=matchingRecipes();cards.replaceChildren();document.getElementById("count").textContent=filtered.length+" recipes";document.getElementById("empty").hidden=filtered.length>0;
 surpriseButton.disabled=filtered.length===0;
 surpriseButton.title=filtered.length?"Choose a random recipe from these "+filtered.length+" results":"No matching recipes to surprise you with";
-filtered.forEach(r=>{let b=add(cards,"button","recipe-card");b.type="button";add(b,"div","card-art",icons[r.category]||"🍲");let c=add(b,"div","card-content");add(c,"div","eyebrow",r.category);add(c,"h3","",r.title);add(c,"p","",r.description);add(c,"div","meta",r.time+" · "+recipeYield(r));if(r.variants?.length)add(c,"span","protein-tag",(r.variants.length+1)+" recipe versions");
+filtered.forEach(r=>{let b=add(cards,"button","recipe-card");b.type="button";add(b,"div","card-art",icons[r.category]||"🍲");let c=add(b,"div","card-content");add(c,"div","eyebrow",r.category);add(c,"h3","",r.title);add(c,"p","",r.description);add(c,"div","meta",r.time+" · "+recipeYield(r));if(r.familyRecipe)add(c,"span","family-recipe-tag","From the family recipe collection");if(r.variants?.length)add(c,"span","protein-tag",(r.variants.length+1)+" recipe versions");
 else if(window.PROTEIN_VARIANTS?.[r.id])add(c,"span","protein-tag","Higher-protein option available");if(window.recipeCardBadge)window.recipeCardBadge(r,c);b.onclick=()=>openRecipe(r)})}
 function surpriseMe(){
   const matches=matchingRecipes();
