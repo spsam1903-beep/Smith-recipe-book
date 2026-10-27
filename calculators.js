@@ -110,25 +110,30 @@ window.attachRecipeCalculator=(original,detail,getSelectedRecipe,getMultiplier,g
  }
  function show(){
   const recipe=getSelectedRecipe(),factor=Number(getMultiplier())||1;
-  const serves=recipe.servings*factor;
+  const serves=recipe.yieldUnknown?null:recipe.servings*factor;
+  const unit=recipe.yieldUnit||"serving";
+  const perUnit=recipe.yieldUnit ? (unit.endsWith("s")?unit.slice(0,-1):unit) : "serving";
   if(recipe.id!==currentId)rebuild();
   summary.replaceChildren();
   const included=rows.filter(x=>x.enabled);
   const absent=included.filter(x=>FIELD_NAMES.some(k=>x[k]===null));
   const totals={calories:0,protein:0,carbs:0,fat:0};
   for(const row of included)for(const k of FIELD_NAMES)totals[k]+=(row[k]||0)*factor;
-  const note=absent.length?"Nutrition incomplete: fill "+absent.length+" included ingredient(s).":"Per serving · "+quantity(serves)+" servings";
   for(const [field,title,suffix] of [["calories","Calories","kcal"],["protein","Protein","g"],["carbs","Carbs","g"],["fat","Fat","g"]]){
-   const n=totals[field]/serves;
-   metric(title,absent.length?"—":quantity(n,field==="calories")+ (field==="calories"?"":" "+suffix),
-     absent.length?"Some nutrition inputs are missing":(title==="Calories"?quantity(totals[field],true)+" kcal total":quantity(totals[field])+" g total"));
+   const displayTitle=serves ? title+" / "+perUnit : title+" · batch total";
+   const amount=serves?totals[field]/serves:totals[field];
+   metric(displayTitle,!included.length||absent.length?"—":quantity(amount,field==="calories")+(field==="calories"?"":" "+suffix),
+     !included.length?"No nutrition data entered yet":absent.length?"Some nutrition inputs are missing":
+      (title==="Calories"?quantity(totals[field],true)+" kcal total":quantity(totals[field])+" g total"));
   }
   const missing=included.filter(x=>x.cost===null);
   const known=included.reduce((sum,x)=>sum+(x.cost||0),0)*factor;
-  metric("Cost per serving",!included.length?"—":missing.length?"—":price(known/serves),
-   !included.length?"Enter ingredient quantities and estimates":missing.length?"Prices missing for "+missing.length+" ingredient(s)":price(known)+" full recipe");
-  const noteElement=make("p",summary,"calc-footnote",
-   "At "+quantity(factor)+"× · "+quantity(serves)+" servings. "+(absent.length?"Nutrition estimate incomplete.":"Full recipe totals shown under each macro.")+
+  metric(serves?"Cost / "+perUnit:"Cost · batch total",
+   !included.length||missing.length?"—":price(serves?known/serves:known),
+   !included.length?"Enter nutrition and cost data for ingredients":missing.length?"Prices missing for "+missing.length+" ingredient(s)":price(known)+" full recipe");
+  make("p",summary,"calc-footnote",
+   "At "+quantity(factor)+"× · "+(recipe.yieldUnknown?"yield not specified":quantity(serves)+" "+unit)+". "+
+   (!included.length?"Nutrition and cost estimates are not yet entered.":absent.length?"Nutrition estimate incomplete.":"Totals shown beneath each macro.")+
    (missing.length?" Known price subtotal: "+price(known)+" ("+(included.length-missing.length)+"/"+included.length+" priced).":"")
   );
   // Ingredient labels change with the serving-size slider, not the original 1x nutrition/price input basis.
